@@ -1,9 +1,9 @@
 {
 	"home": {
 		"welcome": {
-			"morning": "Guten Morgen, mein Name ist Renan 👋",
-			"afternoon": "Guten Tag, mein Name ist Renan 👋",
-			"evening": "Guten Abend, mein Name ist Renan 👋"
+			"morning": "Guten Morgen, mein Name ist Renan",
+			"afternoon": "Guten Tag, mein Name ist Renan",
+			"evening": "Guten Abend, mein Name ist Renan"
 		},
 		"description": "    Ich bin ein Full-Stack-Entwickler und Technologie-Enthusiast mit 6 Jahren autodidaktisher Erfahrung.\n    Ich mag Programming, 3D-Modellierung, und Eletronik sehr gerne.\n    Derzeit studiere ich Computertechnik an der Universidade de Sorocaba (UNISO).",
 		"chatPlaceHolder": "Möchten Sie mehr über mich erfahren?",

@@ -1,50 +1,115 @@
-nav{
+nav {
 	padding: 30px;
-	
-}
-nav ul{
-	
-	list-style: none;
-	display: flex;
-	align-items: center;
-	
-}
-nav >ul>li{
-	display: flex;
-	align-items: center;
-	gap: 4px;
+	ul {
+		list-style: none;
+		display: flex;
+		align-items: center;
 
-	p{
-		font-family: 'montserrat', sans-serif;
-		font-weight: 600;
-		color: var(--text-color);
-		font-size: 22px;
-		padding-top: 3px;
+		li {
+			display: flex;
+			align-items: center;
+			gap: 4px;
+
+			p {
+				font-family: 'montserrat', sans-serif;
+				font-weight: 1200;
+				color: var(--text-color);
+				font-size: 25px;
+				padding-top: 3px;
+				margin: 0;
+			}
+			#logo {
+				font-family: 'tourney', sans-serif;
+				color: var(--logo-color);
+				font-size: 40px;
+				font-weight: 400;
+			}
+			&:first-child {
+				margin-right: auto;
+			}
+		}
+	}
+	#langs {
+		display: flex;
+		gap: 5px;
+		list-style: none;
 		margin: 0;
-	}
-	#logo{
-		font-family: 'tourney', sans-serif;
-		color: var(--logo-color);
-		font-size: 40px;
-		font-weight: 400;
-	}
-	&:first-child{
-		margin-right: auto;
+		padding: 0;
+		.lang {
+			cursor: pointer;
+			border-radius: 5px;
+			opacity: 0.5;
+			transition: opacity 0.3s;
+			&:hover {
+				opacity: 1;
+			}
+		}
 	}
 }
-#langs{
+aside {
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 20px;
+	padding: 30px;
+	padding-top: 40px;
+	box-shadow: inset var(--shadow-color) 5px 5px 10px, color-mix(in srgb, var(--accent-color) 10%, transparent) 8px 8px 30px,
+		var(--shadow-color) 2px 2px 5px;
+	min-width: 200px;
+	border-radius: 15px;
 	display: flex;
-	gap: 5px;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	.lang{
-		cursor: pointer;
-		border-radius: 5px;
-		opacity: .5;
-		transition: opacity .3s;
-		&:hover{
-			opacity: 1;
+	flex-direction: column;
+	align-items: center;
+	.pages {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		gap: 40px;
+		padding: 0;
+		padding-right: 40px;
+		li {
+			font-family: 'anonymous pro', monospace;
+			font-size: 1.4rem;
+			display: flex;
+			align-items: center;
+			color: var(--disabled-color);
+			cursor: pointer;
+			transition: color 0.3s;
+			span {
+				font-size: 1.4rem;
+				margin-right: 18px;
+			}
+			&:hover {
+				color: var(--text-color);
+			}
+		}
+	}
+	.socials {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		gap: 14px;
+		padding: 8px 18px;
+		margin-top: 30px;
+		align-self: center;
+		text-align: center;
+		width: fit-content;
+		box-shadow:
+			inset color-mix(in srgb, var(--accent-color) 20%, transparent) 6px 6px 30px,
+			var(--light-shadow-color) -1px -1px 4px -1px,
+			var(--shadow-color) 2px 2px 5px;
+		border-radius: 30px;
+		button {
+			background: none;
+			border: none;
+			cursor: pointer;
+			svg {
+				fill: var(--disabled-color);
+				transition: fill 0.3s;
+			}
+			&:hover svg {
+				fill: var(--text-color);
+			}
 		}
 	}
 }

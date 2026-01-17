@@ -1,17 +1,18 @@
-:root{
-    --background-color: #121113;
-    --text-color: #ffffff;
-    --dark-text-color: #AAAAAA;
-    --logo-color: #823BF4;
-    --accent-color: #8B3DEC;
-    --disabled-color: #777777;
-    --shadow-color: #00000080;
-    --light-shadow-color: #FFFFFF20;
+:root {
+	--background-color: oklch(17.97% 0.00435 308.034);
+	--text-color: #ffffff;
+	--dark-text-color: oklch(73.802% 0.00008 271.152);
+	--logo-color: oklch(55.455% 0.25321 293.854);
+	--accent-color: oklch(55.949% 0.24387 298.278);
+	--disabled-color: oklch(56.926% 0.00006 271.152);
+	--shadow-color: #00000080;
+	--light-shadow-color: #ffffff20;
 }
-*{
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	list-style: none;
 }
 body {
 	background-color: var(--background-color);

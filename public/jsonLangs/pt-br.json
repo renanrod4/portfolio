@@ -1,9 +1,9 @@
 {
 	"home": {
 		"welcome": {
-			"morning": "Bom dia, meu nome é Renan 👋",
-			"afternoon": "Boa tarde, meu nome é Renan 👋",
-			"evening": "Boa noite, meu nome é Renan 👋"
+			"morning": "Bom dia, meu nome é Renan",
+			"afternoon": "Boa tarde, meu nome é Renan",
+			"evening": "Boa noite, meu nome é Renan"
 		},
 		"description": "    Eu sou um Desenvolvedor Full Stack e entusiasta de tecnologia com 6 anos de experiência autodidata.\n    Eu gosto muito de programção, modelagem 3D e eletrônica.\n    Atualmente estou estudando Engenharia da Computação na Universidade de Sorocaba (UNISO).",
 		"chatPlaceHolder": "Quer saber mais sobre mim?",
