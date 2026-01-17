@@ -1,0 +1,21 @@
+:root{
+    --background-color: #121113;
+    --text-color: #ffffff;
+    --dark-text-color: #AAAAAA;
+    --logo-color: #823BF4;
+    --accent-color: #8B3DEC;
+    --disabled-color: #777777;
+    --shadow-color: #00000080;
+    --light-shadow-color: #FFFFFF20;
+}
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	background-color: var(--background-color);
+	color: var(--text-color);
+	font-family: 'Inter', sans-serif;
+	font-size: 18px;
+}

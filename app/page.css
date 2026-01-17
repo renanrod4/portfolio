@@ -1,5 +1,50 @@
-body {
-	background-color: #121113;
-	color: #ffffff;
-	font-family: 'Inter', sans-serif;
+nav{
+	padding: 30px;
+	
+}
+nav ul{
+	
+	list-style: none;
+	display: flex;
+	align-items: center;
+	
+}
+nav >ul>li{
+	display: flex;
+	align-items: center;
+	gap: 4px;
+
+	p{
+		font-family: 'montserrat', sans-serif;
+		font-weight: 600;
+		color: var(--text-color);
+		font-size: 22px;
+		padding-top: 3px;
+		margin: 0;
+	}
+	#logo{
+		font-family: 'tourney', sans-serif;
+		color: var(--logo-color);
+		font-size: 40px;
+		font-weight: 400;
+	}
+	&:first-child{
+		margin-right: auto;
+	}
+}
+#langs{
+	display: flex;
+	gap: 5px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	.lang{
+		cursor: pointer;
+		border-radius: 5px;
+		opacity: .5;
+		transition: opacity .3s;
+		&:hover{
+			opacity: 1;
+		}
+	}
 }
