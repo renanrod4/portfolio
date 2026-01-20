@@ -1,3 +1,31 @@
+div.root {
+	p,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	li,
+	span {
+		transition: opacity 0.3s;
+	}
+	&.language-transition main {
+		p,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		li,
+		span {
+			opacity: 0;
+			/* dont effect navbar */
+		}
+	}
+}
+
 nav {
 	padding: 30px;
 	ul {
@@ -46,27 +74,34 @@ nav {
 		}
 	}
 }
-aside {
+.sidebar {
 	position: fixed;
 	top: 50%;
-	transform: translateY(-50%);
+	translate: 0 -50%;
 	left: 20px;
 	padding: 30px;
 	padding-top: 40px;
-	box-shadow: inset var(--shadow-color) 5px 5px 10px, color-mix(in srgb, var(--accent-color) 10%, transparent) 8px 8px 30px,
+	background: var(--bg-color);
+	box-shadow:
+		inset var(--shadow-color) 5px 5px 10px,
+		color-mix(in srgb, var(--accent-color) 10%, transparent) 8px 8px 30px,
 		var(--shadow-color) 2px 2px 5px;
+	width: fit-content;
 	min-width: 200px;
 	border-radius: 15px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	white-space: nowrap;
+	overflow: hidden;
+
 	.pages {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-around;
 		gap: 40px;
 		padding: 0;
-		padding-right: 40px;
+		padding-right: 20px;
 		li {
 			font-family: 'anonymous pro', monospace;
 			font-size: 1.4rem;

@@ -6,6 +6,7 @@ const LanguageContext = createContext<LanguageContextType | null>(null);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
 	const [language, setLanguage] = useState<Language>('en-us');
+	const [isLoadingLanguageSwitch, setIsLoadingLanguageSwitch] = useState(false);
 
 	useEffect(() => {
 		// Check for saved language preference in localStorage
@@ -13,17 +14,26 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 		if (saved) setLanguage(saved);
 	}, []);
 
-	function changeLanguage(lang: Language) {
-		setLanguage(lang);
-		localStorage.setItem('lang', lang);
+	async function changeLanguage(lang: Language) {
+		// Add a classname to body to hide and show content during language switch 
+		setIsLoadingLanguageSwitch(true);
+		setTimeout(() => {
+			setIsLoadingLanguageSwitch(false);
+			// Change the current language and save preference
+			setLanguage(lang);
+			localStorage.setItem('lang', lang);
+		}, 300);
 	}
-
+	function isTransitioning() {
+		return isLoadingLanguageSwitch;
+	}
 	return (
 		<LanguageContext.Provider
 			value={{
 				language,
 				text: translations[language],
 				changeLanguage,
+				isTransitioning,
 			}}
 		>
 			{children}

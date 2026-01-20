@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@formkit/auto-animate": "^0.9.0",
+    "framer-motion": "^12.27.1",
     "next": "^16.1.3",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",

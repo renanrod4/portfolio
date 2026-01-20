@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Tourney, Inter, Montserrat, Anonymous_Pro } from 'next/font/google';
-import { LanguageProvider } from '../context/LanguageContext';
-import './global.css';
+import { LanguageProvider } from '@/context/LanguageContext';
+import './layout.css';
 
 export const metadata: Metadata = {
 	title: "Renanrod's Portfolio",
@@ -19,11 +19,12 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className={`${tourney.className} ${inter.className} ${montserrat.className} ${anonymous_pro.className}`}>
+		<html
+			lang="en"
+			className={`${tourney.className} ${inter.className} ${montserrat.className} ${anonymous_pro.className}`}
+		>
 			<body>
-				<LanguageProvider>
-					{children}
-				</LanguageProvider>
+				<LanguageProvider>{children}</LanguageProvider>
 			</body>
 		</html>
 	);

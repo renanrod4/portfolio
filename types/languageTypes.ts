@@ -15,6 +15,7 @@ export type LanguageContextType = {
   language: Language;
   text: typeof en | typeof pt | typeof de;
   changeLanguage: (lang: Language) => void;
+  isTransitioning: () => boolean;
 };  
 
 export const languageJsonStructure = {

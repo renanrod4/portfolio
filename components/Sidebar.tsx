@@ -1,26 +1,37 @@
 'use client';
 import { useLanguage } from '@/context/LanguageContext';
 import { languageJsonStructure } from '@/types/languageTypes';
+import { motion, AnimatePresence } from 'framer-motion';
 import { IoHome } from 'react-icons/io5';
-import { FaCode } from 'react-icons/fa6';
+import { FaCode, FaFolder, FaGithubAlt, FaLinkedinIn } from 'react-icons/fa6';
 import { FaPhoneAlt } from 'react-icons/fa';
-import { FaFolder } from 'react-icons/fa';
-import { FaGithubAlt } from 'react-icons/fa';
-import { FaLinkedinIn } from 'react-icons/fa';
 
 export default function SideBar() {
-	const { text } = useLanguage() || { text: languageJsonStructure };
+	const { text, language } = useLanguage() || { text: languageJsonStructure };
 	const icons = [<IoHome />, <FaCode />, <FaFolder />, <FaPhoneAlt />];
+
 	return (
-		<aside>
-			<ul className='pages'>
+		<motion.aside
+			layout
+			transition={{
+				type: 'spring',
+				stiffness: 300,
+				damping: 7,
+			}}
+			data-lang={language}
+			className="sidebar"
+		>
+			<ul className="pages">
 				{text?.sideBarList.map((item, i) => (
 					<li key={i}>
-						<span>{icons[i]}</span> {item}
+						<span>{icons[i]}</span>
+
+						<motion.span layout="position">{item}</motion.span>
 					</li>
 				))}
 			</ul>
-			<ul className="socials">
+
+			<motion.ul layout className="socials">
 				<li className="github">
 					<button>
 						<FaGithubAlt size="28" />
@@ -31,7 +42,7 @@ export default function SideBar() {
 						<FaLinkedinIn size="28" />
 					</button>
 				</li>
-			</ul>
-		</aside>
+			</motion.ul>
+		</motion.aside>
 	);
 }
