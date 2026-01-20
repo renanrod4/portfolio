@@ -1,7 +1,7 @@
 'use client';
 import { useLanguage } from '@/context/LanguageContext';
 import { languageJsonStructure } from '@/types/languageTypes';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { IoHome } from 'react-icons/io5';
 import { FaCode, FaFolder, FaGithubAlt, FaLinkedinIn } from 'react-icons/fa6';
 import { FaPhoneAlt } from 'react-icons/fa';
