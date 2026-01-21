@@ -229,20 +229,33 @@ main {
 		margin-right: 10px;
 		margin-bottom: 0;
 		padding: 5px;
+		display: flex;
+		flex-direction: column;
 
 		.message {
 			padding: 15px;
 			margin-bottom: 15px;
-			margin-right: 45px;
 			border-radius: 10px;
 			text-wrap: wrap;
+			width: fit-content;
 			box-shadow:
 				inset var(--shadow-color) 3px 3px 10px,
 				var(--light-shadow-color) -1px -1px 6px -2px,
 				color-mix(in srgb, var(--accent-color) 20%, transparent) 3px 3px 8px;
 			font-size: 1rem;
 			line-height: 1.5rem;
-			color: var(--dark-text-color);
+			color: var(--text-color);
+			&.aiMessage {
+				color: var(--dark-text-color);
+				margin-right: 45px;
+				align-self: flex-start;
+			}
+			&.userMessage {
+				background-color: var(--accent-color);
+				margin-left: auto;
+				margin-left: 45px;
+				align-self: flex-end;
+			}
 			&:last-child {
 				margin-bottom: 0;
 			}
@@ -253,7 +266,7 @@ main {
 		margin-top: 15px;
 		display: flex;
 		gap: 10px;
-		
+
 		input {
 			flex: 1;
 			padding: 10px;
@@ -262,8 +275,7 @@ main {
 			background-color: var(--bg-color);
 			font-size: 1rem;
 			color: var(--text-color);
-			transition:
-				border-color 0.3s;
+			transition: border-color 0.3s;
 			&:focus {
 				outline: none;
 				border-color: var(--accent-color);

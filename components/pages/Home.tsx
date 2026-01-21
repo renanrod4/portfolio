@@ -20,30 +20,27 @@ export default function Home() {
 				))}
 				<div className="chat">
 					<div className="chatMessageContainer">
-						<div className="message">
+                        <div className="message userMessage">
+                            <p>Você está disponível para novos projetos?</p>
+                        </div>
+						<div className="message aiMessage">
 							<p>
-								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae ut quam veniam soluta
-								ipsum earum maiores esse maxime eligendi libero.
+								Sim, estou disponível para novos projetos! Fique à vontade para entrar em contato comigo
+                                através do meu e-mail ou redes sociais. Estou ansioso para colaborar em novos desafios e
+                                construir algo incrível juntos!
 							</p>
 						</div>
-						<div className="message">
-							<p>
-								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae ut quam veniam soluta
-								ipsum earum maiores esse maxime eligendi libero.
-							</p>
-						</div>
-						<div className="message">
-							<p>
-								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae ut quam veniam soluta
-								ipsum earum maiores esse maxime eligendi libero.
-							</p>
-						</div>
-						<div className="message">
-							<p>
-								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae ut quam veniam soluta
-								ipsum earum maiores esse maxime eligendi libero.
-							</p>
-						</div>
+                        <div className="message userMessage">
+                            <p>Quais tecnologias você mais utiliza?</p>
+                        </div>
+                        <div className="message aiMessage">
+                            <p>
+                                Eu utilizo uma variedade de tecnologias, mas minhas favoritas incluem JavaScript, TypeScript,
+                                React, Next.js, Node.js e Python. Também tenho experiência com bancos de dados como
+                                PostgreSQL e MongoDB, além de ferramentas de versionamento como Git. Estou sempre aberto a
+                                aprender novas tecnologias conforme as necessidades dos projetos.
+                            </p>
+                        </div>
 					</div>
 					<div className="chatInputContainer">
 						<input type="text" placeholder={text?.home.chatPlaceHolder} />
