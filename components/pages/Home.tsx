@@ -1,5 +1,6 @@
 import { useLanguage } from '@/context/LanguageContext';
 import { languageJsonStructure } from '@/types/languageTypes';
+import { useState } from 'react';
 import { FaPaperPlane } from "react-icons/fa";
 
 
@@ -18,37 +19,50 @@ export default function Home() {
 				{text?.home.description.split('\n').map((line, index) => (
 					<p key={index}>{line}</p>
 				))}
-				<div className="chat">
-					<div className="chatMessageContainer">
-                        <div className="message userMessage">
-                            <p>Você está disponível para novos projetos?</p>
-                        </div>
-						<div className="message aiMessage">
-							<p>
-								Sim, estou disponível para novos projetos! Fique à vontade para entrar em contato comigo
-                                através do meu e-mail ou redes sociais. Estou ansioso para colaborar em novos desafios e
-                                construir algo incrível juntos!
-							</p>
-						</div>
-                        <div className="message userMessage">
-                            <p>Quais tecnologias você mais utiliza?</p>
-                        </div>
-                        <div className="message aiMessage">
-                            <p>
-                                Eu utilizo uma variedade de tecnologias, mas minhas favoritas incluem JavaScript, TypeScript,
-                                React, Next.js, Node.js e Python. Também tenho experiência com bancos de dados como
-                                PostgreSQL e MongoDB, além de ferramentas de versionamento como Git. Estou sempre aberto a
-                                aprender novas tecnologias conforme as necessidades dos projetos.
-                            </p>
-                        </div>
-					</div>
-					<div className="chatInputContainer">
-						<input type="text" placeholder={text?.home.chatPlaceHolder} />
-                        <button><FaPaperPlane size={20}/></button>
-					</div>
-				</div>
+				<Chat text={text} />
 			</div>
 			<div className="col2"></div>
 		</div>
 	);
+}
+type ChatMessage = { role: 'user' | 'ai'; content: string };
+function Chat({ text }: { text: typeof languageJsonStructure }) {
+	const [inputChat, setInputChat] = useState('');
+	const [chatMessages, setChatMessages] = useState<Array<ChatMessage>>([]);
+	function handleSubmitChat(e: React.FormEvent) {
+		e.preventDefault();
+		if (!inputChat.trim()) return;
+		const newUserMessage: ChatMessage = { role: 'user', content: inputChat.trim()};
+		setChatMessages((prev) => [...prev, newUserMessage]);
+		setInputChat('');
+
+		async function fetchAIResponse() {
+			const response = await fetch('/api/chat', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ message: newUserMessage.content }),
+			});
+			const data = await response.json();
+			const newAIMessage: ChatMessage = { role: 'ai', content: data.response };
+			setChatMessages((prev) => [...prev, newAIMessage]);
+		}
+		fetchAIResponse();
+
+	}
+
+	return (
+		<div className="chat">
+			<div className="chatMessageContainer">
+				{chatMessages.map((msg, index) => (
+					<div key={index} className={`message ${msg.role === 'user' ? 'userMessage' : 'aiMessage'}`}>
+						<p>{msg.content}</p>
+					</div>
+				))}
+			</div>
+			<div className="chatInputContainer">
+				<input type="text" placeholder={text?.home.chatPlaceHolder} value={inputChat} onChange={(e) => setInputChat(e.target.value)} />
+				<button onClick={handleSubmitChat} ><FaPaperPlane size={20}/></button>
+			</div>
+		</div>
+	)
 }
