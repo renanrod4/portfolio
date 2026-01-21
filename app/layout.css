@@ -2,6 +2,7 @@
 	--background-color: oklch(17.97% 0.00435 308.034);
 	--text-color: #ffffff;
 	--border-color: oklch(20% 0.01326 285.152);
+	--lighter-border-color: oklch(25% 0.01326 285.152);
 	--dark-text-color: oklch(73.802% 0.00008 271.152);
 	--logo-color: oklch(55.455% 0.25321 293.854);
 	--accent-color: oklch(55.949% 0.24387 298.278);
@@ -22,3 +23,25 @@ body {
 	font-size: 18px;
 	
 }
+
+html, body, .root {
+	height: 100%;
+	width: 100%;
+}
+/* scroll */
+::-webkit-scrollbar {
+	width: 8px;
+}
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: color-mix(in srgb, var(--accent-color) 20%, transparent);
+	border-radius: 20px;
+	border: 1px solid var(--accent-color);
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: var(--text-color);
+}
+/* scroll end */
