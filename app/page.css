@@ -124,13 +124,14 @@ nav {
 			align-items: center;
 			color: var(--disabled-color);
 			cursor: pointer;
-			transition: color 0.3s;
+			transition: color 0.3s, transform 0.3s;
 			span {
 				font-size: 1.4rem;
 				margin-right: 18px;
 			}
 			&:hover {
 				color: var(--text-color);
+				transform: scale(1.05);
 			}
 		}
 	}
@@ -299,5 +300,43 @@ main {
 				transform: scale(1.05);
 			}
 		}
+	}
+}
+
+@keyframes wave {
+	0% { transform: rotate(0deg) scale(1); }
+	15% { transform: rotate(14deg) scale(1.1); }
+	30% { transform: rotate(-8deg) scale(1.15); }
+	40% { transform: rotate(14deg) scale(1.2); }
+	50% { transform: rotate(-4deg) scale(1.15); }
+	60% { transform: rotate(10deg) scale(1.1); }
+	70% { transform: rotate(0deg) scale(1); }
+	100% { transform: rotate(0deg) scale(1); }
+}
+
+
+.hello {
+	display: inline-block;
+	transform-origin: 70% 70%;
+	font-size: 2.4rem;
+	
+}
+
+.hello:hover {
+	animation: wave 2s infinite;
+	transform-origin: 70% 70%;
+	cursor: pointer;
+}
+a {
+	color: var(--accent-color);
+	text-decoration: none;
+	text-shadow: 0px 0px 10px color-mix(in srgb, var(--accent-color) 50%, transparent);
+	&:visited {
+		color: var(--dark-accent-color);
+		text-shadow: 0px 0px 10px color-mix(in srgb, var(--dark-accent-color) 50%, transparent);
+	}
+	&:hover {
+		color: var(--text-color);
+		text-shadow: 0px 0px 15px var(--text-color);
 	}
 }

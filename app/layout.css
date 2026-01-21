@@ -6,6 +6,7 @@
 	--dark-text-color: oklch(73.802% 0.00008 271.152);
 	--logo-color: oklch(55.455% 0.25321 293.854);
 	--accent-color: oklch(55.949% 0.24387 298.278);
+	--dark-accent-color: oklch(35.949% 0.24387 298.278);
 	--disabled-color: oklch(56.926% 0.00006 271.152);
 	--shadow-color: #00000080;
 	--light-shadow-color: #ffffff20;
@@ -42,6 +43,5 @@ html, body, .root {
 	border: 1px solid var(--accent-color);
 }
 ::-webkit-scrollbar-thumb:hover {
-	background-color: var(--text-color);
+	background-color: var(--accent-color);
 }
-/* scroll end */
