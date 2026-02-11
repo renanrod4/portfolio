@@ -11,38 +11,43 @@ export default function SideBar() {
 	const icons = [<IoHome />, <FaCode />, <FaFolder />, <FaPhoneAlt />];
 
 	return (
-		<motion.aside
-			layout
-			transition={{
-				type: 'spring',
-				stiffness: 300,
-				damping: 7,
-			}}
-			data-lang={language}
-			className="sidebar"
-		>
-			<ul className="pages">
-				{text?.sideBarList.map((item, i) => (
-					<li key={i}>
-						<span>{icons[i]}</span>
+		<div className="sidebar-container">
+			<motion.aside
+				layout
+				transition={{
+					type: 'spring',
+					stiffness: 300,
+					damping: 7,
+				}}
+				data-lang={language}
+				className="sidebar"
+			>
+				<ul className="pages">
+					{text?.sideBarList.map((item, i) => (
+						<li key={i}>
+							<span>{icons[i]}</span>
 
-						<motion.span layout="position">{item}</motion.span>
+							<motion.span layout="position">{item}</motion.span>
+						</li>
+					))}
+				</ul>
+
+				<motion.ul layout className="socials">
+					<li className="github">
+						<button>
+							<FaGithubAlt size="28" />
+						</button>
 					</li>
-				))}
-			</ul>
-
-			<motion.ul layout className="socials">
-				<li className="github">
-					<button>
-						<FaGithubAlt size="28" />
-					</button>
-				</li>
-				<li className="linkedin">
-					<button>
-						<FaLinkedinIn size="28" />
-					</button>
-				</li>
-			</motion.ul>
-		</motion.aside>
+					<li className="linkedin">
+						<button>
+							<FaLinkedinIn size="28" />
+						</button>
+					</li>
+				</motion.ul>
+			</motion.aside>	
+			<button className="cv-btn" onClick={() => window.open('/curriculo.pdf', '_blank')}>
+				{text?.home.curriculum}
+			</button>
+		</div>
 	);
 }

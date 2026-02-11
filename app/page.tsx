@@ -9,15 +9,12 @@ import { languageJsonStructure } from '@/types/languageTypes';
 export default function Page() {
 	const { isTransitioning } = useLanguage() || { isTransitioning: () => false };
 	const { text } = useLanguage() || { text: languageJsonStructure };
-	
+
 	return (
 		<div className={`root ${isTransitioning() ? 'language-transition' : ''}`}>
 			<NavBar />
 			<main>
-				<div className='sidebarContainer'>
-					<SideBar />
-					{/* <button>{text?.home.curriculum}</button> */}
-				</div>
+				<SideBar />
 				<Home />
 			</main>
 		</div>
