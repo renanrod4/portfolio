@@ -4,18 +4,38 @@ import './page.css';
 import NavBar from '@/components/NavBar';
 import { useLanguage } from '@/context/LanguageContext';
 import Home from '@/components/pages/Home';
-import { languageJsonStructure } from '@/types/languageTypes';
+import { useEffect, useState } from 'react';
+import Skills from '@/components/pages/Skills';
 
 export default function Page() {
+	const [page, setPage] = useState('');
 	const { isTransitioning } = useLanguage() || { isTransitioning: () => false };
-	const { text } = useLanguage() || { text: languageJsonStructure };
+
+	useEffect(() => {
+		const hash = window.location.hash.substring(1);
+		setPage(hash);
+
+		const handleHashChange = () => {
+			const newHash = window.location.hash.substring(1);
+			setPage(newHash);
+		};
+
+		window.addEventListener('hashchange', handleHashChange);
+		return () => window.removeEventListener('hashchange', handleHashChange);
+	}, []);
 
 	return (
 		<div className={`root ${isTransitioning() ? 'language-transition' : ''}`}>
 			<NavBar />
 			<main>
 				<SideBar />
-				<Home />
+				{!page && <Home />}
+				{page === 'skills' && <Skills />}
+				{/* 
+					{page === 'about' && <About />}
+					{page === 'projects' && <Projects />}
+					{page === 'contact' && <Contact />} 
+				  */}
 			</main>
 		</div>
 	);

@@ -118,10 +118,11 @@ nav {
 			display: flex;
 			flex-direction: column;
 			justify-content: space-around;
+			
 			gap: 40px;
 			padding: 0;
 			padding-right: 20px;
-			li {
+			li ,a{
 				font-family: "anonymous pro", monospace;
 				font-size: 1.4rem;
 				display: flex;
