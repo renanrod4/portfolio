@@ -5,9 +5,72 @@
 			"afternoon": "Good afternoon, my name is Renan",
 			"evening": "Good evening, my name is Renan"
 		},
-		"description": "    I’m a Full Stack Developer and technology enthusiast with 6 years of self-taught experience.\n    I really like programming, 3d modelling and eletronic.\n     Currently studying Computer Engineering at Universidade de Sorocaba (UNISO).",
+		"description": "I’m a Full Stack Developer and technology enthusiast with 6 years of self-taught experience.\nI really like programming, 3d modelling and eletronic.\n Currently studying Computer Engineering at Universidade de Sorocaba (UNISO).",
 		"chatPlaceHolder": "Want to know more about me?",
 		"curriculum": "Download CV"
 	},
-	"sideBarList": ["Home", "Skills", "Projects", "Contact"]
+	"skills": {
+		"title1": "Tech Skills",
+		"categories":[
+			{
+				"name": "Software & Tools",
+				"items": [
+					"Blender",
+					"Unity",
+					"VS Code",
+					"Arduino IDE",
+					"Figma",
+					"Git",
+					"Github",
+					"Bootstrap",
+					"Tailwind",
+					"Vercel"
+				]
+			},
+			{
+				"name": "Web Development",
+				"items": [
+					"HTML",
+					"CSS",
+					"JavaScript",
+					"TypeScript",
+					"React",
+					"Next.js",
+					"Node.js",
+					"Php",
+					"Rest API"
+
+				]
+			},
+			{
+				"name": "Programming Languages",
+				"items": [
+					"Python",
+					"Rust",
+					"C++",
+					"C#",
+					"Bashscript"
+				]
+			},
+			{
+				"name": "Database Management",
+				"items": [
+					"MySQL",
+					"MongoDB"
+				]
+			}
+		],
+		"title2": "Language Skills",
+		"languages": {
+			"portuguese": "Native",
+			"english": "Intermediate - B2/C1 CEFR",
+			"german": "Basic - A2 CEFR"
+		}
+	},
+	"sideBarList": [
+		"Home",
+		"Skills",
+		"Projects",
+		"Contact"
+	]
 }

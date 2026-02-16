@@ -5,9 +5,72 @@
 			"afternoon": "Guten Tag, mein Name ist Renan",
 			"evening": "Guten Abend, mein Name ist Renan"
 		},
-		"description": "    Ich bin ein Full-Stack-Entwickler und Technologie-Enthusiast mit 6 Jahren autodidaktisher Erfahrung.\n    Ich mag Programming, 3D-Modellierung, und Eletronik sehr gerne.\n    Derzeit studiere ich Computertechnik an der Universidade de Sorocaba (UNISO).",
+		"description": "Ich bin ein Full-Stack-Entwickler und Technologie-Enthusiast mit 6 Jahren autodidaktisher Erfahrung.\nIch mag Programming, 3D-Modellierung, und Eletronik sehr gerne.\nDerzeit studiere ich Computertechnik an der Universidade de Sorocaba (UNISO).",
 		"chatPlaceHolder": "Möchten Sie mehr über mich erfahren?",
 		"curriculum": "Lebenslauf herunterladen"
 	},
-	"sideBarList": ["Start", "Kompetenzen", "Projekte", "Kontakt"]
+	"skills": {
+		"title1": "Technische Fähigkeiten",
+		"categories": [
+			{
+				"name": "Software & Werkzeuge",
+				"items": [
+					"Blender",
+					"Unity",
+					"VS Code",
+					"Arduino IDE",
+					"Figma",
+					"Git",
+					"Github",
+					"Bootstrap",
+					"Tailwind",
+					"Vercel"
+				]
+			},
+			{
+				"name": "Webentwicklung",
+				"items": [
+					"HTML",
+					"CSS",
+					"JavaScript",
+					"TypeScript",
+					"React",
+					"Next.js",
+					"Node.js",
+					"Php",
+					"Rest API"
+
+				]
+			},
+			{
+				"name": "Programmiersprachen",
+				"items": [
+					"Python",
+					"Rust",
+					"C++",
+					"C#",
+					"Bashscript"
+				]
+			},
+			{
+				"name": "Datenbankverwaltung",
+				"items": [
+					"MySQL",
+					"MongoDB"
+				]
+			}
+		],
+		"title2": "Sprachkenntnisse",
+		"languages": {
+			"portuguese": "Muttersprache",
+			"english": "Mittelstufe - B2/C1 CEFR",
+			"german": "Grundkenntnisse - A2 CEFR"
+		}
+	},
+	"sideBarList": [
+		"Start",
+		"Kompetenzen",
+		"Projekte",
+		"Kontakt"
+	]
 }

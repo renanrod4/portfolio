@@ -118,11 +118,12 @@ nav {
 			display: flex;
 			flex-direction: column;
 			justify-content: space-around;
-			
+
 			gap: 40px;
 			padding: 0;
 			padding-right: 20px;
-			li ,a{
+			li,
+			a {
 				font-family: "anonymous pro", monospace;
 				font-size: 1.4rem;
 				display: flex;
@@ -227,6 +228,78 @@ main {
 	.col1,
 	.col2 {
 		flex: 1;
+	}
+}
+.skills {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 50px;
+	width: 100%;
+	h1 {
+		font-family: "Anonymous Pro", monospace;
+		font-weight: 400;
+		font-size: 3rem;
+		margin-bottom: 40px;
+	}
+	.skills-categories {
+		display: flex;
+		list-style: none;
+		padding: 0;
+		width: 80%;
+		justify-content: space-evenly;
+
+		.skills-category {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			h2 {
+				font-family: "Anonymous Pro", monospace;
+				font-weight: 400;
+				font-size: 1.3rem;
+				margin-bottom: 20px;
+				max-width: 18ch;
+				min-width: 200px;
+				height: 3ch;
+				text-align: center;
+			}
+			& > li {
+				box-shadow: 10px 10px 30px var(--shadow-color);
+				padding: 20px;
+				border-radius: 15px;
+				width: 200px;
+				
+				.skills-items {
+					list-style: none;
+					padding: 0;
+					display: flex;
+					flex-direction: column;
+					gap: 15px;
+					width: 100%;
+
+					li {
+						display: flex;
+						align-items: center;
+						gap: 10px;
+						width: 100%;
+
+						div {
+							display: flex;
+							gap: 10px;
+							text-align: center;
+							align-items: center;
+							flex: 1;
+
+							p {
+								font-family: "Average Sans", sans-serif;
+								font-size: 1.2rem;
+								flex: 1;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
 main {

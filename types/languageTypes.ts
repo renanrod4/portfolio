@@ -18,7 +18,35 @@ export type LanguageContextType = {
   isTransitioning: () => boolean;
 };  
 
-export const languageJsonStructure = {
+type Category = {
+  name: string
+  items: string[]
+}
+
+type LanguageStructure = {
+  home: {
+    welcome: {
+      morning: string
+      afternoon: string
+      evening: string
+    }
+    description: string
+    chatPlaceHolder: string
+    curriculum: string
+  }
+  skills: {
+    title1: string
+    categories: Category[]
+    title2: string
+    languages: {
+      portuguese: string
+      english: string
+      german: string
+    }
+  }
+  sideBarList: string[]
+}
+export const languageJsonStructure: LanguageStructure = {
   home: {
     welcome: {
       morning: '',
@@ -28,6 +56,21 @@ export const languageJsonStructure = {
     description: '',
     chatPlaceHolder: '',
     curriculum: ''
+  },
+  skills: {
+    title1: '',
+    categories: [
+      {
+        name: '',
+        items: ['']
+      }
+    ],
+    title2: '',
+    languages: {
+      portuguese: '',
+      english: '',
+      german: ''
+    }
   },
   sideBarList: ['']
 }
