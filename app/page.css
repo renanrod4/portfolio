@@ -93,7 +93,7 @@ nav {
 		padding-top: 40px;
 		background: var(--bg-color);
 		box-shadow:
-			inset var(--shadow-color) 5px 5px 15px,
+			inset var(--shadow-color) 10px 10px 15px,
 			color-mix(in srgb, var(--accent-color) 10%, transparent) 8px 8px 30px,
 			var(--light-shadow-color) -2px -2px 10px -8px;
 		min-width: 200px;
@@ -109,7 +109,7 @@ nav {
 			border 0.3s;
 		&:hover {
 			box-shadow:
-				inset var(--shadow-color) 5px 5px 15px,
+				inset var(--shadow-color) 10px 10px 15px,
 				color-mix(in srgb, var(--accent-color) 20%, transparent) 10px 10px 40px,
 				var(--light-shadow-color) -2px -2px 12px -8px;
 			border: 2px solid var(--accent-color);
@@ -153,6 +153,8 @@ nav {
 			align-self: center;
 			text-align: center;
 			width: fit-content;
+			background: var(--alt-background-color);
+
 			box-shadow:
 				inset color-mix(in srgb, var(--accent-color) 20%, transparent) 6px 6px 30px,
 				var(--light-shadow-color) -1px -1px 4px -1px,
@@ -242,61 +244,150 @@ main {
 		font-size: 3rem;
 		margin-bottom: 40px;
 	}
-	.skills-categories {
+	.tech-skills {
+		width: 100%;
 		display: flex;
-		list-style: none;
-		padding: 0;
-		width: 80%;
-		justify-content: space-evenly;
-
-		.skills-category {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		.skills-categories {
 			display: flex;
-			flex-direction: column;
-			gap: 20px;
-			h2 {
-				font-family: "Anonymous Pro", monospace;
-				font-weight: 400;
-				font-size: 1.3rem;
-				margin-bottom: 20px;
-				max-width: 18ch;
-				min-width: 200px;
-				height: 3ch;
-				text-align: center;
-			}
-			& > li {
-				box-shadow: 10px 10px 30px var(--shadow-color);
-				padding: 20px;
-				border-radius: 15px;
-				width: 200px;
-				
-				.skills-items {
-					list-style: none;
-					padding: 0;
-					display: flex;
-					flex-direction: column;
-					gap: 15px;
-					width: 100%;
+			list-style: none;
+			padding: 0;
+			width: 80%;
+			justify-content: space-evenly;
 
-					li {
+			.skills-category {
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+				h2 {
+					font-family: "Anonymous Pro", monospace;
+					font-weight: 400;
+					font-size: 1.3rem;
+					margin-bottom: 20px;
+					max-width: 18ch;
+					min-width: 200px;
+					height: 3ch;
+					text-align: center;
+				}
+				& > li {
+					box-shadow:
+						10px 10px 30px var(--shadow-color),
+						-2px -2px 15px -5px var(--light-shadow-color);
+					padding: 20px;
+					border-radius: 25px;
+					width: 200px;
+
+					.skills-items {
+						list-style: none;
+						padding: 0;
 						display: flex;
-						align-items: center;
-						gap: 10px;
+						flex-direction: column;
+						gap: 7px;
 						width: 100%;
 
-						div {
+						li {
 							display: flex;
-							gap: 10px;
-							text-align: center;
 							align-items: center;
-							flex: 1;
+							gap: 10px;
+							width: 100%;
+							box-shadow:
+								inset var(--shadow-color) 5px 5px 10px,
+								color-mix(in srgb, var(--accent-color) 10%, transparent) 3px 3px 40px;
+							background: var(--alt-background-color);
+							padding: 7px;
+							border-radius: 12px;
 
-							p {
-								font-family: "Average Sans", sans-serif;
-								font-size: 1.2rem;
+							div {
+								display: flex;
+								gap: 10px;
+								text-align: center;
+								align-items: center;
+
 								flex: 1;
+								.image {
+									width: 35px;
+									height: 35px;
+									max-width: 35px;
+									display: flex;
+									align-items: center;
+									justify-content: center;
+									border-radius: 8px;
+									background-color: white;
+
+									.skill-icon {
+										width: 25px;
+										height: auto;
+
+										object-fit: contain;
+									}
+								}
+								p {
+									font-family: "Average Sans", sans-serif;
+									font-size: 1.2rem;
+									flex: 1;
+								}
 							}
 						}
 					}
+				}
+			}
+		}
+	}
+	.language-skills {
+		margin-top: 40px;
+		width: 100%;
+		min-height: 60lvh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		ul {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			box-shadow:
+				inset var(--shadow-color) 5px 5px 10px,
+				color-mix(in srgb, var(--accent-color) 10%, transparent) 3px 3px 25px;
+			padding: 20px;
+			border-radius: 25px;
+			text-wrap: nowrap;
+			li {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				gap: 12px;
+				font-family: "Roboto Mono", monospace;
+				font-size: 1.2rem;
+				background: var(--alt-background-color);
+				padding: 10px;
+				width: fit-content;
+				border-radius: 12px;
+				box-shadow:
+					inset color-mix(in srgb, var(--accent-color) 15%, transparent) 5px 5px 35px,
+					var(--light-shadow-color) -2px -2px 6px -2px,
+					var(--shadow-color) 2px 2px 10px;
+				transition:
+					box-shadow 0.3s,
+					transform 0.3s;
+				.image {
+					display: block;
+					height: 30px;
+					overflow: hidden;
+					.language-icon {
+						width: 30px;
+						height: auto;
+						object-fit: contain;
+					}
+				}
+				&:hover {
+					box-shadow:
+						inset color-mix(in srgb, var(--accent-color) 30%, transparent) 5px 5px 35px,
+						var(--light-shadow-color) -2px -2px 6px -2px,
+						var(--shadow-color) 2px 2px 10px;
+					transform: scale(1.03);
 				}
 			}
 		}
@@ -338,7 +429,7 @@ main {
 			text-wrap: wrap;
 			width: fit-content;
 			box-shadow:
-				inset var(--shadow-color) 3px 3px 10px,
+				inset var(--shadow-color) 5px 5px 10px,
 				var(--light-shadow-color) -1px -1px 6px -2px,
 				color-mix(in srgb, var(--accent-color) 20%, transparent) 3px 3px 8px;
 			font-size: 1rem;

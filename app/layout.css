@@ -1,7 +1,8 @@
 :root {
 	--background-color: #121113;
+	--alt-background-color: #151416;
 	--text-color: #ffffff;
-	--border-color: oklch(20% 0.01326 285.152);
+	--border-color: #15151c;
 	--lighter-border-color: oklch(25% 0.01326 285.152);
 	--dark-text-color: oklch(73.802% 0.00008 271.152);
 	--logo-color: oklch(55.455% 0.25321 293.854);

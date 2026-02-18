@@ -8,33 +8,54 @@ export default function Skills() {
 
     return (
         <div className="skills">
-            <h1>{text.skills.title1}</h1>
-            <ul className="skills-categories">
-                {text.skills.categories.map((category, index) => (
-                    <div className="skills-category" key={index}>
-                        <h2>{category.name}</h2>
-                        <li>
-                            <ul className="skills-items">
-                                {category.items.map((item, itemIndex) => (
-                                    <li key={itemIndex}>
-                                        <div>
-                                            <Image src={`/icons/${item.toLowerCase()}.svg`} alt={`${item} icon`} width={24} height={24} />
-                                            <p>{item}</p>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-                        </li>
-                    </div>
-                ))}
-            </ul>
+            <section className="tech-skills">
+                <h1>{text.skills.title1}</h1>
+                <ul className="skills-categories">
+                    {text.skills.categories.map((category, index) => (
+                        <div className="skills-category" key={index}>
+                            <h2>{category.name}</h2>
+                            <li>
+                                <ul className="skills-items">
+                                    {category.items.map((item, itemIndex) => (
+                                        <li key={itemIndex}>
+                                            <div>
+                                                <div className="image">
+                                                    <Image src={`/images/skillIcons/${item.toLowerCase().replace('#', "sharp")}.png`} alt={`${item} icon`} width={0} height={0} className="skill-icon" />
+                                                </div>
+                                                <p>{item}</p>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </li>
+                        </div>
+                    ))}
+                </ul>
+            </section>
 
-            <h1>{text.skills.title2}</h1>
-            <ul className="language-skills">
-                <li>{text.skills.languages.portuguese}</li>
-                <li>{text.skills.languages.english}</li>
-                <li>{text.skills.languages.german}</li>
-            </ul>
+            <section className="language-skills">
+                <h1>{text.skills.title2}</h1>
+                <ul>
+                    <li>
+                        <div className="image">
+                            <Image src="/images/langs/pt-br.png" alt="Portuguese flag" width={0} height={0} className="language-icon" />
+                        </div>
+                        <span>{text.skills.languages.portuguese}</span>
+                    </li>
+                    <li>
+                        <div className="image">
+                            <Image src="/images/langs/en-us.png" alt="US flag" width={0} height={0} className="language-icon" />
+                        </div>
+                        <span>{text.skills.languages.english}</span>
+                    </li>
+                    <li>
+                        <div className="image">
+                            <Image src="/images/langs/de.png" alt="German flag" width={0} height={0} className="language-icon" />
+                        </div>
+                        <span>{text.skills.languages.german}</span>
+                    </li>
+                </ul>
+            </section>
         </div>
     );
 }
