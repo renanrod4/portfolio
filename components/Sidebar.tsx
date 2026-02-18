@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { IoHome } from 'react-icons/io5';
 import { FaCode, FaFolder, FaGithubAlt, FaLinkedinIn } from 'react-icons/fa6';
 import { FaPhoneAlt } from 'react-icons/fa';
+import Link from 'next/link';
 
 export default function SideBar() {
 	const { text, language } = useLanguage() || { text: languageJsonStructure };
@@ -25,11 +26,12 @@ export default function SideBar() {
 				<ul className="pages">
 					{text?.sideBarList.map((item, i) => (
 						<li key={i}>
-							{/* If the item is "Home", the link should point to the top of the page, otherwise it should point to the section with the same name as the item */}
-							<a href={`#${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`} className="sidebar-link">
+							{/* cant just use "#${item.toLowerCase()}" because the site has 3 languages and the id's are in english, so i have to do this */}
+							<Link href={`/#${i === 0 ? '' : i === 1 ? 'skills' : i === 2 ? 'projects' : 'contact'}`}
+								 className="sidebar-link">
 								<span>{icons[i]}</span>
 								<motion.span layout="position">{item}</motion.span>
-							</a>
+							</Link>
 						</li>
 					))}
 				</ul>
