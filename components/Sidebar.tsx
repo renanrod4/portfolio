@@ -14,20 +14,22 @@ export default function SideBar({ page, setPage }: { page: string; setPage: (pag
 	return (
 		<div className="sidebar-container">
 			<motion.aside
-				layout
+				layout="size"
 				transition={{
-					type: 'spring',
-					stiffness: 300,
-					damping: 7,
+					layout: {
+						type: 'spring',
+						stiffness: 300,
+						damping: 7,
+					}
 				}}
 				data-lang={language}
 				className="sidebar"
 			>
 				<ul className="pages">
 					{text?.sideBarList.map((item, i) => (
-						<li key={i}>
+						<motion.li layout="position" key={i}>
 							{/* cant just use "#${item.toLowerCase()}" because the site has 3 languages and the id's are in english, so i have to do this */}
-							<Link 
+							<Link
 								href={`/#${i === 0 ? '' : i === 1 ? 'skills' : i === 2 ? 'projects' : 'contact'}`}
 								onClick={() => setPage(i === 0 ? '' : i === 1 ? 'skills' : i === 2 ? 'projects' : 'contact')}
 								className={`sidebar-link 
@@ -37,13 +39,13 @@ export default function SideBar({ page, setPage }: { page: string; setPage: (pag
 									${page === 'contact' && i === 3 ? 'active' : ''}`}
 							>
 								<span>{icons[i]}</span>
-								<motion.span layout="position">{item}</motion.span>
+								<motion.span>{item}</motion.span>
 							</Link>
-						</li>
+						</motion.li>
 					))}
 				</ul>
 
-				<motion.ul layout className="socials">
+				<motion.ul layout layoutDependency={language} className="socials">
 					<li className="github">
 						<button>
 							<FaGithubAlt size="28" />
