@@ -28,7 +28,7 @@ export default function Page() {
 		<div className={`root ${isTransitioning() ? 'language-transition' : ''}`}>
 			<NavBar />
 			<main>
-				<SideBar />
+				<SideBar page={page} setPage={setPage} />
 				{!page && <Home />}
 				{page === 'skills' && <Skills />}
 				{/* 
