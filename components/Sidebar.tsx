@@ -15,6 +15,7 @@ export default function SideBar({ page, setPage }: { page: string; setPage: (pag
 		<div className="sidebar-container">
 			<motion.aside
 				layout="size"
+				layoutDependency={language}
 				transition={{
 					layout: {
 						type: 'spring',
@@ -27,7 +28,7 @@ export default function SideBar({ page, setPage }: { page: string; setPage: (pag
 			>
 				<ul className="pages">
 					{text?.sideBarList.map((item, i) => (
-						<motion.li layout="position" key={i}>
+						<motion.li layout="size" layoutDependency={language} key={i}>
 							{/* cant just use "#${item.toLowerCase()}" because the site has 3 languages and the id's are in english, so i have to do this */}
 							<Link
 								href={`/#${i === 0 ? '' : i === 1 ? 'skills' : i === 2 ? 'projects' : 'contact'}`}
@@ -39,7 +40,7 @@ export default function SideBar({ page, setPage }: { page: string; setPage: (pag
 									${page === 'contact' && i === 3 ? 'active' : ''}`}
 							>
 								<span>{icons[i]}</span>
-								<motion.span>{item}</motion.span>
+								<motion.span layoutDependency={language}>{item}</motion.span>
 							</Link>
 						</motion.li>
 					))}
