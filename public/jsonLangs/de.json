@@ -67,6 +67,39 @@
 			"german": "Grundkenntnisse - A2 CEFR"
 		}
 	},
+	"projects": {
+		"OctoDev":{
+			"description": "Gamifizierte Lernplattform für Programmierung. Beherrsche das Coden durch interaktive Herausforderungen, Fähigkeitsbäume und Echtzeit-Feedback.",
+			"link": "https://octodev.vercel.app/",
+			"image": "octodev.png"
+			
+		},
+		"FlexyApi":{
+			"description": "FlexyAPI ist eine vielseitige RESTful API, die eine breite Palette von Funktionen bietet, darunter Benutzerverwaltung, Authentifizierung, Datenanalyse und mehr. Sie ist darauf ausgelegt, Entwicklern eine flexible und leistungsstarke Lösung für die Integration in ihre Anwendungen zu bieten.",
+			"link": "flexy-api.vercel.app",
+			"image": "flexyapi.png"
+		},
+		"Silhouettle":{
+			"description": "Ein Geografiespiel, bei dem Sie das Land anhand seiner Silhouette erraten.",
+			"link": "https://silhouettle.vercel.app/",
+			"image": "silhouettle.png"
+		},
+		"Periodic Table Game":{
+			"description": "Lernen Sie das Periodensystem mit diesem interaktiven Quiz auswendig.",
+			"link": "https://github.com/renanrod4/Periodic-Table-game",
+			"image": "periodic-table-game.png"
+		},
+		"Forkify":{
+			"description": "Eine Rezept-Suchmaschine, die es Benutzern ermöglicht, ihre Lieblingsrezepte aus dem gesamten Web zu finden, zu speichern und zu teilen.",
+			"link": "https://renanrod-forkify.netlify.app/",
+			"image": "forkify.png"
+		},
+		"Interior Consultant":{
+			"description": "Eine UI/UX-Herausforderung von devchallenges.io. Eine Website für Innenarchitekturberatung mit einem modernen und eleganten Design.",
+			"link": "https://interior-consultant-master-sandy.vercel.app/",
+			"image": "interior-consultant.png"
+		}
+	},
 	"sideBarList": [
 		"Start",
 		"Kompetenzen",

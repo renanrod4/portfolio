@@ -1,6 +1,5 @@
 import { useLanguage } from "@/context/LanguageContext";
 import { languageJsonStructure } from "@/types/languageTypes";
-import { li } from "framer-motion/client";
 import Image from 'next/image';
 
 export default function Skills() {

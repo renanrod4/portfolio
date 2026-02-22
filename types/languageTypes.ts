@@ -22,6 +22,11 @@ type Category = {
   name: string
   items: string[]
 }
+type ProjectDetails = {
+  description: string
+  link: string
+  image: string
+}
 
 type LanguageStructure = {
   home: {
@@ -44,6 +49,7 @@ type LanguageStructure = {
       german: string
     }
   }
+  projects: Record<string, ProjectDetails>
   sideBarList: string[]
 }
 export const languageJsonStructure: LanguageStructure = {
@@ -72,5 +78,37 @@ export const languageJsonStructure: LanguageStructure = {
       german: ''
     }
   },
+  projects: {
+    'OctoDev': {
+      description: '',
+      link: '',
+      image: ''
+    },
+    'FlexyApi': {
+      description: '',
+      link: '',
+      image: ''
+    },
+    'Silhouettle': {
+      description: '',
+      link: '',
+      image: ''
+    },
+    'Periodic Table Game': {
+      description: '',
+      link: '',
+      image: ''
+    },
+    'Forkify': {
+      description: '',
+      link: '',
+      image: ''
+    },
+    'Interior Consultant': {
+      description: '',
+      link: '',
+      image: ''
+    }
+  }, 
   sideBarList: ['']
 }

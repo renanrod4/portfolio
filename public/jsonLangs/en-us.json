@@ -67,6 +67,39 @@
 			"german": "Basic - A2 CEFR"
 		}
 	},
+	"projects":{
+		"OctoDev":{
+			"description": "Gamified learning platform for programming. Master coding through interactive challenges, skill trees, and real-time feedback.",
+			"link": "https://octodev.vercel.app/",
+			"image": "octodev.png"
+			
+		},
+		"FlexyApi":{
+			"description": "A AI-powered API that simulates any rest API based on a simple description. Perfect for testing and prototyping without backend setup.",
+			"link": "https://flexy-api.vercel.app/",
+			"image": "flexyapi.png"
+		},
+		"Silhouettle":{
+			"description": "Geography game where you guess the country based on its silhouette.",
+			"link": "https://silhouettle.vercel.app/",
+			"image": "silhouettle.png"
+		},
+		"Periodic Table Game":{
+			"description": "Memorize the periodic table with this interactive quiz.",
+			"link": "https://github.com/renanrod4/Periodic-Table-game",
+			"image": "periodic-table-game.png"
+		},
+		"Forkify":{
+			"description": "A recipe search engine that allows users to find, save, and share their favorite recipes from around the web.",
+			"link": "https://renanrod-forkify.netlify.app/",
+			"image": "forkify.png"
+		},
+		"Interior Consultant":{
+			"description": "A UI/UX Challenge of devchallenges.io. An interior design consultant website with a modern and elegant design.",
+			"link": "https://interior-consultant-master-sandy.vercel.app/",
+			"image": "interior-consultant.png"
+		}
+	},
 	"sideBarList": [
 		"Home",
 		"Skills",

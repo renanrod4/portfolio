@@ -67,6 +67,38 @@
 			"german": "Básico - A2 CEFR"
 		}
 	},
+	"projects": {
+		"OctoDev": {
+			"description": "Plataforma de aprendizado gamificada para programação. Domine a codificação por meio de desafios interativos, árvores de habilidades e feedback em tempo real.",
+			"link": "https://octodev.vercel.app/",
+			"image": "octodev.png"
+		},
+		"FlexyApi": {
+			"description": "API de gerenciamento de tarefas flexível e escalável, projetada para se adaptar a diversos casos de uso e fluxos de trabalho, oferecendo uma solução robusta para organização e produtividade.",
+			"link": "https://flexy-api.vercel.app/",
+			"image": "flexyapi.png"
+		},
+		"Silhouettle":{
+			"description": "Jogo de geografia onde você adivinha o país com base em sua silhueta.",
+			"link": "https://silhouettle.vercel.app/",
+			"image": "silhouettle.png"
+		},
+		"Periodic Table Game":{
+			"description": "Memorize a tabela periódica com este quiz interativo.",
+			"link": "https://github.com/renanrod4/Periodic-Table-game",
+			"image": "periodic-table-game.png"
+		},
+		"Forkify":{
+			"description": "Um motor de busca de receitas que permite aos usuários encontrar, salvar e compartilhar suas receitas favoritas de toda a web.",
+			"link": "https://renanrod-forkify.netlify.app/",
+			"image": "forkify.png"
+		},
+		"Interior Consultant":{
+			"description": "Um Desafio de UI/UX do devchallenges.io. Um site de consultoria de design de interiores com um design moderno e elegante.",
+			"link": "https://interior-consultant-master-sandy.vercel.app/",
+			"image": "interior-consultant.png"
+		}
+	},
 	"sideBarList": [
 		"Início",
 		"Habilidades",
