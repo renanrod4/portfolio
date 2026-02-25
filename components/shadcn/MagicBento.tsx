@@ -14,6 +14,7 @@ export interface BentoCardProps {
   image: string;
   disableAnimations?: boolean;
   link: string;
+  gridSpan?: string;
 }
 
 export interface BentoProps {
@@ -497,11 +498,9 @@ const MagicBento: React.FC<BentoProps> = ({
 }) => {
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
-  
-  // 1. Hook called safely inside component
+
   const { text } = useLanguage() || { text: languageJsonStructure };
 
-  // 2. Data moved inside component and memoized
   const cardData: BentoCardProps[] = useMemo(() => [
     {
       color: '#121113',
@@ -509,6 +508,7 @@ const MagicBento: React.FC<BentoProps> = ({
       description: text.projects.Silhouettle.description,
       image: text.projects.Silhouettle.image,
       link: text.projects.Silhouettle.link,
+      gridSpan: 'md:col-span-1 md:row-span-1',
     },
     {
       color: '#121113',
@@ -516,20 +516,23 @@ const MagicBento: React.FC<BentoProps> = ({
       description: text.projects['Periodic Table Game'].description,
       image: text.projects['Periodic Table Game'].image,
       link: text.projects['Periodic Table Game'].link,
+      gridSpan: 'md:col-span-1 md:row-span-1',
     },
     {
       color: '#121113',
       title: 'OctoDev',
       description: text.projects.OctoDev.description,
       image: text.projects.OctoDev.image,
-      link: text.projects.OctoDev.link
+      link: text.projects.OctoDev.link,
+      gridSpan: 'md:col-span-2 md:row-span-2',
     },
     {
       color: '#121113',
       title: 'FlexyApi',
       description: text.projects.FlexyApi.description,
       image: text.projects.FlexyApi.image,
-      link:  text.projects.FlexyApi.link,
+      link: text.projects.FlexyApi.link,
+      gridSpan: 'md:col-span-2 md:row-span-2',
     },
     {
       color: '#121113',
@@ -537,6 +540,24 @@ const MagicBento: React.FC<BentoProps> = ({
       description: text.projects.Forkify.description,
       image: text.projects.Forkify.image,
       link: text.projects.Forkify.link,
+      gridSpan: 'md:col-span-1 md:row-span-1',
+    },
+    {
+      color: '#121113',
+      title: 'Car Rental',
+      description: text.projects['Car Rental'].description,
+      image: text.projects['Car Rental'].image,
+      link: text.projects['Car Rental'].link,
+      gridSpan: 'md:col-span-1 md:row-span-1',
+    },
+
+    {
+      color: '#121113',
+      title: "RR's Dealership",
+      description: text.projects["RR's Dealership"].description,
+      image: text.projects["RR's Dealership"].image,
+      link: text.projects["RR's Dealership"].link,
+      gridSpan: 'md:col-span-2 md:row-span-2',
     },
     {
       color: '#121113',
@@ -544,6 +565,15 @@ const MagicBento: React.FC<BentoProps> = ({
       description: text.projects['Interior Consultant'].description,
       image: text.projects['Interior Consultant'].image,
       link: text.projects['Interior Consultant'].link,
+      gridSpan: 'md:col-span-2 md:row-span-1',
+    },
+    {
+      color: '#121113',
+      title: 'Github Profile',
+      description: text.projects['Github Profile'].description,
+      image: text.projects['Github Profile'].image,
+      link: text.projects['Github Profile'].link,
+      gridSpan: 'md:col-span-2 md:row-span-1',
     }
   ], [text]);
 
@@ -564,7 +594,7 @@ const MagicBento: React.FC<BentoProps> = ({
       <BentoCardGrid gridRef={gridRef}>
         {cardData.map((card, index) => {
           const baseClassName = `magic-bento-card ${textAutoHide ? 'magic-bento-card--text-autohide' : ''} ${enableBorderGlow ? 'magic-bento-card--border-glow' : ''}`;
-          
+
           const cardStyle: React.CSSProperties = {
             backgroundImage: `url(/images/projects/${card.image})`,
             backgroundSize: 'cover',
@@ -661,11 +691,11 @@ const MagicBento: React.FC<BentoProps> = ({
                     el.appendChild(ripple);
 
                     gsap.fromTo(ripple, { scale: 0, opacity: 1 }, {
-                        scale: 1,
-                        opacity: 0,
-                        duration: 0.8,
-                        ease: 'power2.out',
-                        onComplete: () => ripple.remove()
+                      scale: 1,
+                      opacity: 0,
+                      duration: 0.8,
+                      ease: 'power2.out',
+                      onComplete: () => ripple.remove()
                     });
                   };
 
@@ -684,7 +714,7 @@ const MagicBento: React.FC<BentoProps> = ({
               href={card.link}
               key={index}
               target="_blank"
-              className="block no-underline h-full w-full"
+              className={`block no-underline h-full w-full ${card.gridSpan || ''}`}
               style={{ display: 'flex' }}
             >
               {renderCard()}

@@ -23,10 +23,9 @@
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
-  aspect-ratio: 4/3;
-  min-height: 200px;
+  aspect-ratio: auto; 
+  height: 100%;       
   width: 100%;
-  max-width: 100%;
   border-radius: 20px;
   border: 1px solid var(--border-color);
   background: var(--background-dark);
@@ -67,6 +66,7 @@
   max-height: 100px;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 20px, transparent);
   backdrop-filter: blur(2px);
+  transition: max-height 0.4s ease-in-out, background 0.3s ease;
 
   h2 {
     font-size: 0.85em;
@@ -75,7 +75,10 @@
     font-size: 0.7em;
   }
 }
-
+.magic-bento-card:hover .magic-bento-card__content {
+  max-height: 100%; 
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 40%, transparent);
+}
 .magic-bento-card__header {
   gap: 0.75em;
   justify-content: space-between;
@@ -148,26 +151,48 @@
 @media (min-width: 1024px) {
   .card-grid {
     grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 220px; 
+    gap: .7em; 
   }
 
-  /* Selecionamos o FILHO DIRETO do grid, seja ele qual for (Link ou Div) */
+  
+  
+  
+  .card-grid > :nth-child(4) { 
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  
   .card-grid > :nth-child(3) {
     grid-column: span 2;
     grid-row: span 2;
   }
 
-  .card-grid > :nth-child(4) {
-    grid-column: 1 / span 2;
-    grid-row: 2 / span 2;
+  
+  .card-grid > :nth-child(1),
+  .card-grid > :nth-child(2) {
+    grid-column: span 1;
+    grid-row: span 1;
   }
-
+  .card-grid > :nth-child(5),
   .card-grid > :nth-child(6) {
-    grid-column: 4;
-    grid-row: 3;
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .card-grid > :nth-child(7) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  
+  .card-grid > :nth-child(8),
+  .card-grid > :nth-child(9) {
+    grid-column: span 2;
+    grid-row: span 1;
   }
 }
 
-/* Border glow effect */
+
 .magic-bento-card--border-glow::after {
   content: "";
   position: absolute;
@@ -227,7 +252,7 @@
     0 0 30px var(--purple-glow);
 }
 
-/* Global spotlight styles */
+
 .global-spotlight {
   mix-blend-mode: screen;
   will-change: transform, opacity;

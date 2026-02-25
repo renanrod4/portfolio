@@ -108,6 +108,21 @@ export const languageJsonStructure: LanguageStructure = {
       description: '',
       link: '',
       image: ''
+    },
+    "RR's Dealership": {
+      description: '',
+      link: '',
+      image: ''
+    },
+    'Car Rental': {
+      description: '',
+      link: '',
+      image: ''
+    },
+    'Github Profile': {
+      description: '',
+      link: '',
+      image: ''
     }
   }, 
   sideBarList: ['']

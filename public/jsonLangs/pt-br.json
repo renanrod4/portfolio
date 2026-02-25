@@ -39,7 +39,6 @@
 					"Node.js",
 					"Php",
 					"Rest API"
-
 				]
 			},
 			{
@@ -78,25 +77,40 @@
 			"link": "https://flexy-api.vercel.app/",
 			"image": "flexyapi.png"
 		},
-		"Silhouettle":{
+		"Silhouettle": {
 			"description": "Jogo de geografia onde você adivinha o país com base em sua silhueta.",
 			"link": "https://silhouettle.vercel.app/",
 			"image": "silhouettle.png"
 		},
-		"Periodic Table Game":{
+		"Periodic Table Game": {
 			"description": "Memorize a tabela periódica com este quiz interativo.",
 			"link": "https://github.com/renanrod4/Periodic-Table-game",
 			"image": "periodic-table-game.png"
 		},
-		"Forkify":{
+		"Forkify": {
 			"description": "Um motor de busca de receitas que permite aos usuários encontrar, salvar e compartilhar suas receitas favoritas de toda a web.",
 			"link": "https://renanrod-forkify.netlify.app/",
 			"image": "forkify.png"
 		},
-		"Interior Consultant":{
+		"Interior Consultant": {
 			"description": "Um Desafio de UI/UX do devchallenges.io. Um site de consultoria de design de interiores com um design moderno e elegante.",
 			"link": "https://interior-consultant-master-sandy.vercel.app/",
 			"image": "interior-consultant.png"
+		},
+		"RR's Dealership": {
+			"description": "Um site de concessionária de carros com design moderno e elegante, possuindo mais de 70 variantes de carros, cada um com uma página de detalhes individual.",
+			"link": "https://rr-dealership.vercel.app/",
+			"image": "rr-dealership.png"
+		},
+		"Car Rental": {
+			"description": "A concretização de uma UI de aluguel de carros que achei no pinterest. O site apresenta um design moderno e elegante",
+			"link": "https://car-rental-psi.vercel.app/",
+			"image": "car-rental.png"
+		},
+		"Github Profile": {
+			"description": "Caso queira conhecer mais projetos ou saber um pouco mais sobre mim, visite meu perfil no Github.",
+			"link": "https://github.com/renanrod4/",
+			"image": "github-profile.png"
 		}
 	},
 	"sideBarList": [
