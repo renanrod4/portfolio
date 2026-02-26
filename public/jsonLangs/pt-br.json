@@ -67,6 +67,7 @@
 		}
 	},
 	"projects": {
+		"title": "Projetos",
 		"OctoDev": {
 			"description": "Plataforma de aprendizado gamificada para programação. Domine a codificação por meio de desafios interativos, árvores de habilidades e feedback em tempo real.",
 			"link": "https://octodev.vercel.app/",

@@ -67,6 +67,7 @@
 		}
 	},
 	"projects": {
+		"title": "Projekte",
 		"OctoDev": {
 			"description": "Gamifizierte Lernplattform für Programmierung. Beherrsche das Coden durch interaktive Herausforderungen, Fähigkeitsbäume und Echtzeit-Feedback.",
 			"link": "https://octodev.vercel.app/",

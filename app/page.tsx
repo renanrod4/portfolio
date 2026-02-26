@@ -7,6 +7,7 @@ import Home from '@/components/pages/Home';
 import { useEffect, useState } from 'react';
 import Skills from '@/components/pages/Skills';
 import Projects from '@/components/pages/Projects';
+import Contact from '@/components/pages/Contact';
 
 export default function Page() {
 	const [page, setPage] = useState('');
@@ -33,9 +34,7 @@ export default function Page() {
 				{!page && <Home />}
 				{page === 'skills' && <Skills />}
 				{page === 'projects' && <Projects />}
-				{/* 
-					{page === 'contact' && <Contact />} 
-				  */}
+				{page === 'contact' && <Contact />}
 			</main>
 		</div>
 	);
