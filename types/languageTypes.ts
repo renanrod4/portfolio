@@ -49,7 +49,9 @@ type LanguageStructure = {
       german: string
     }
   }
-  projects: Record<string, ProjectDetails>
+  projects: {
+    title: string;
+  } & Record<string, ProjectDetails | string>;
   sideBarList: string[]
 }
 export const languageJsonStructure: LanguageStructure = {
@@ -79,6 +81,7 @@ export const languageJsonStructure: LanguageStructure = {
     }
   },
   projects: {
+    title: '',
     'OctoDev': {
       description: '',
       link: '',
