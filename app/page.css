@@ -191,14 +191,19 @@ nav {
 		font-family: "anonymous pro", monospace;
 
 		border: none;
-		background-color: var(--accent-color);
+		background: linear-gradient(
+			135deg,
+			color-mix(in srgb, var(--accent-color) 60%, var(--text-color)) 0%,
+			var(--accent-color) 30%,
+			color-mix(in srgb, var(--accent-color) 30%, transparent) 100%
+		);
 		color: var(--text-color);
 		cursor: pointer;
 		transition:
 			background-color 0.3s,
 			transform 0.3s;
 		&:hover {
-			background-color: color-mix(in srgb, var(--accent-color) 80%, var(--text-color));
+			opacity: 0.9;
 			transform: scale(1.05);
 		}
 	}
@@ -564,5 +569,210 @@ a {
 		margin-bottom: 40px;
 		text-align: center;
 		align-self: center;
+	}
+}
+
+.contact {
+	max-width: 1200px;
+	margin: 50px auto;
+	padding: 20px;
+
+	.bento-grid {
+		display: grid;
+		grid-template-columns: 1fr 1.5fr;
+		gap: 20px;
+	}
+
+	.left-column {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.card:hover {
+		border-color: var(--lighter-border-color);
+	}
+
+	.card {
+		display: flex;
+		align-items: center;
+		background-color: var(--alt-background-color);
+		border: 1px solid var(--border-color);
+		border-radius: 16px;
+		padding: 24px;
+		transition: border-color 0.3s ease;
+		box-shadow:
+			inset var(--shadow-color) 5px 5px 30px,
+			var(--light-shadow-color) -1px -1px 10px -3px,
+			color-mix(in srgb, var(--accent-color) 20%, transparent) 3px 3px 10px;
+		gap: 15px;
+		.icon {
+			width: 45px;
+			height: 45px;
+			background-color: var(--accent-color);
+			border-radius: 10px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: linear-gradient(
+				135deg,
+				color-mix(in srgb, var(--accent-color) 60%, var(--text-color)) 0%,
+				var(--accent-color) 40%,
+				color-mix(in srgb, var(--accent-color) 20%, transparent) 100%
+			);
+		}
+
+		.text {
+			h3 {
+				margin: 0;
+				font-size: 1.1rem;
+				color: var(--text-color);
+			}
+			p {
+				margin: 4px 0 0;
+				color: var(--dark-text-color);
+				font-size: 0.9rem;
+			}
+		}
+	}
+
+	.socials {
+		h3 {
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+		.links {
+			display: flex;
+			gap: 12px;
+			.icon {
+				width: 45px;
+				height: 45px;
+				background-color: #1e1d20;
+				border: 1px solid var(--border-color);
+				border-radius: 8px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: white;
+				text-decoration: none;
+				transition: 0.3s;
+				&:hover {
+					background-color: var(--accent-color);
+				}
+			}
+		}
+	}
+
+	.quick-response-card {
+		background: linear-gradient(
+			135deg,
+			var(--alt-background-color) 0%,
+			color-mix(in srgb, var(--accent-color) 20%, transparent) 100%
+		);
+		border: 1px solid color-mix(in srgb, var(--accent-color) 50%, transparent);
+		transition: border 0.3s;
+		div {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			margin-bottom: 10px;
+		}
+		p {
+			margin: 0;
+			font-size: 0.9rem;
+			color: var(--dark-text-color);
+		}
+		span {
+			color: var(--text-color);
+			font-weight: bold;
+			font-size: .95rem;
+			text-shadow: 0px 0px 10px color-mix(in srgb, var(--accent-color) 50%, transparent);
+		}
+
+		&:hover {
+			border-color: var(--accent-color);
+		}
+	}
+
+	.form-card {
+		display: flex;
+		flex-direction: column;
+
+		h2 {
+			margin-top: 0;
+			font-size: 2rem;
+		}
+		p {
+			color: var(--dark-text-color);
+			margin-bottom: 30px;
+		}
+		.form-row {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 15px;
+			margin-bottom: 15px;
+		}
+	}
+
+	.inputs {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		margin-bottom: 15px;
+		label {
+			font-size: 0.9rem;
+			margin-left: 8px;
+			color: var(--text-color);
+			span {
+				color: var(--accent-color);
+			}
+		}
+	}
+
+	input,
+	textarea {
+		background-color: var(--background-color);
+		border: 1px solid var(--border-color);
+		border-radius: 15px;
+		padding: 12px;
+		color: white;
+		outline: none;
+	}
+
+	input:focus,
+	textarea:focus {
+		border-color: var(--accent-color);
+	}
+
+	.send-button {
+		background: linear-gradient(
+			135deg,
+			color-mix(in srgb, var(--accent-color) 60%, var(--text-color)) 0%,
+			var(--accent-color) 30%,
+			color-mix(in srgb, var(--accent-color) 30%, transparent) 100%
+		);
+
+		color: var(--text-color);
+		border: none;
+		padding: 15px;
+		border-radius: 8px;
+		font-weight: bold;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		margin-top: 10px;
+		transition: 0.3s;
+	}
+
+	.send-button:hover {
+		opacity: 0.9;
+		transform: scale(1.05);
+	}
+	@media (max-width: 768px) {
+		.bento-grid {
+			grid-template-columns: 1fr;
+		}
 	}
 }
