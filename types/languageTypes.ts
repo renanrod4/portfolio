@@ -10,6 +10,10 @@ export const translations = {
   'de': de
 };
 export type Language = 'pt-br' | 'en-us' | 'de';
+type ProjectKeys = 
+  | 'OctoDev' | 'FlexyApi' | 'Silhouettle' 
+  | 'Periodic Table Game' | 'Forkify' | 'Interior Consultant' 
+  | "RR's Dealership" | 'Car Rental' | 'Github Profile';
 
 export type LanguageContextType = {
   language: Language;
@@ -51,7 +55,9 @@ type LanguageStructure = {
   }
   projects: {
     title: string;
-  } & Record<string, ProjectDetails | string>;
+  } & { 
+    [key in ProjectKeys]: ProjectDetails
+  };
   sideBarList: string[]
 }
 export const languageJsonStructure: LanguageStructure = {

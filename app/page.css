@@ -637,6 +637,9 @@ a {
 	}
 
 	.socials {
+		display: flex;
+		flex-direction: column;
+		gap: 0px;
 		h3 {
 			margin-top: 0;
 			margin-bottom: 20px;
