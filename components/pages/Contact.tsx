@@ -1,7 +1,11 @@
+import { useLanguage } from "@/context/LanguageContext";
+import { languageJsonStructure } from "@/types/languageTypes";
 import Link from "next/link";
 import { FaGithubAlt, FaLinkedinIn, FaLocationDot, FaEnvelope } from "react-icons/fa6";
 
 export default function Contact() {
+    const { text } = useLanguage() || { text: languageJsonStructure };
+
     return (
         <div className="contact">
             <div className="bento-grid">
@@ -13,7 +17,7 @@ export default function Contact() {
                             <FaLocationDot />
                         </div>
                         <div className="text">
-                            <h3>Location</h3>
+                            <h3>{text.contact.location}</h3>
                             <p>Vargem Grande Paulista, SP</p>
                         </div>
                     </div>
@@ -24,13 +28,13 @@ export default function Contact() {
 
                         </div>
                         <div className="text">
-                            <h3>Email</h3>
+                            <h3>{text.contact.email}</h3>
                             <p>renanrdemeneses@gmail.com</p>
                         </div>
                     </div>
 
                     <div className="card socials">
-                        <h3>Connect With Me</h3>
+                        <h3>{text.contact.socialsMessage}</h3>
                         <div className="links">
                             <Link href="https://github.com/renanrod4" className="icon github">
                                 <FaGithubAlt size="24" />
@@ -47,40 +51,39 @@ export default function Contact() {
 
                     <div className="card quick-response-card">
                         <p>
-                            <span>Respondo em menos de 3 horas!</span> Se você tem uma pergunta rápida ou quer discutir um projeto, não hesite em me enviar uma mensagem
+                            <span>{text.contact.quickResponse.span}</span> {text.contact.quickResponse.text}
                         </p>
                     </div>
 
                 </div>
 
                 <div className="card form-card">
-                    <h2>Send Me a Message</h2>
-                    <p>Preencha o formulário abaixo e eu entrarei em contato o mais breve possível.</p>
-
+                    <h2>{text.contact.message.title}</h2>
+                    <p>{text.contact.message.description}</p>
                     <form>
                         <div className="inputs">
-                            <label>Full Name <span>*</span></label>
-                            <input type="text" placeholder="Seu nome completo" required />
+                            <label>{text.contact.message.labels.name}<span>*</span></label>
+                            <input type="text" placeholder={text.contact.message.placeholders.name} required />
                         </div>
 
                         <div className="form-row">
                             <div className="inputs">
-                                <label>Email <span>*</span></label>
-                                <input type="email" placeholder="seu@email.com" required />
+                                <label>{text.contact.message.labels.email} <span>*</span></label>
+                                <input type="email" placeholder={text.contact.message.placeholders.email} required />
                             </div>
                             <div className="inputs">
-                                <label>Mobile <span>*</span></label>
-                                <input type="text" placeholder="(11) 99999-9999" required />
+                                <label>{text.contact.message.labels.telephone} <span>*</span></label>
+                                <input type="text" placeholder={text.contact.message.placeholders.telephone}required />
                             </div>
                         </div>
 
                         <div className="inputs">
-                            <label>Message <span>*</span></label>
-                            <textarea rows={6} placeholder="Como posso te ajudar?" required></textarea>
+                            <label>{text.contact.message.labels.message} <span>*</span></label>
+                            <textarea rows={6} placeholder={text.contact.message.placeholders.message} required></textarea>
                         </div>
 
                         <button type="submit" className="send-button">
-                            Send Message
+                            {text.contact.message.sendButton}
                         </button>
                     </form>
                 </div>

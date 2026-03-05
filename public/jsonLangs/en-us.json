@@ -114,6 +114,32 @@
 			"image": "github-profile.png"
 		}
 	},
+	"contact": {
+		"location": "Location",
+		"email": "Email",
+		"socialsMessage": "Connect with me",
+		"quickResponse": {
+			"span": "I respond in less than 3 hours!",
+			"text": "If you have a quick question or want to discuss a project, don't hesitate to send me a message"
+		},
+		"message": {
+			"title": "Send me a message",
+			"description": "Fill out the form below and I'll get back to you as soon as possible.",
+			"labels": {
+				"name": "Full name",
+				"email": "Email",
+				"telephone": "Mobile",
+				"message": "Message"
+			},
+			"placeholders": {
+				"name": "Your full name",
+				"email": "your@email.com",
+				"telephone": "(99) 99999-9999",
+				"message": "How can I help you?"
+			},
+			"sendButton": "Send Message"
+		}
+	},
 	"sideBarList": [
 		"Home",
 		"Skills",

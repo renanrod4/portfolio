@@ -114,6 +114,32 @@
 			"image": "github-profile.png"
 		}
 	},
+	"contact": {
+		"location": "Localização",
+		"email": "E-mail",
+		"socialsMessage": "Conecte-se comigo",
+		"quickResponse":{
+			"span": "Respondo em menos de 3 horas!",
+			"text":"Se você tem uma pergunta rápida ou quer discutir um projeto, não hesite em me enviar uma mensagem"
+		},
+		"message": {
+			"title": "Me envie uma mensagem",
+			"description": "Preencha o formulário abaixo e eu entrarei em contato o mais breve possível.",
+			"labels": {
+				"name": "Nome completo",
+				"email": "E-mail",
+				"telephone": "Telefone",
+				"message": "Mensagem"
+			},
+			"placeholders": {
+				"name": "Seu nome completo",
+				"email": "seu@email.com",
+				"telephone": "(99) 99999-9999",
+				"message": "Como posso te ajudar?"
+			},
+			"sendButton": "Enviar Mensagem"
+		}
+	},
 	"sideBarList": [
 		"Início",
 		"Habilidades",

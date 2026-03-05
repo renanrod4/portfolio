@@ -707,6 +707,8 @@ a {
 		}
 		p {
 			color: var(--dark-text-color);
+			margin-left: 34px;
+			margin-right: 34px;
 			margin-bottom: 30px;
 		}
 		.form-row {

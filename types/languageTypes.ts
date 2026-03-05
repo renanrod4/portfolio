@@ -58,6 +58,32 @@ type LanguageStructure = {
   } & { 
     [key in ProjectKeys]: ProjectDetails
   };
+  contact: {
+    location: string
+    email: string
+    socialsMessage: string
+    quickResponse: {
+      span: string
+      text: string
+    }
+    message: {
+      title: string
+      description: string
+      labels: {
+        name: string
+        email: string
+        telephone: string
+        message: string
+      }
+      placeholders: {
+        name: string
+        email: string
+        telephone: string
+        message: string
+      }
+      sendButton: string
+    }
+  }
   sideBarList: string[]
 }
 export const languageJsonStructure: LanguageStructure = {
@@ -133,6 +159,32 @@ export const languageJsonStructure: LanguageStructure = {
       link: '',
       image: ''
     }
-  }, 
+  },
+  contact: {
+    location: '',
+    email: '',
+    socialsMessage: '',
+    quickResponse: {
+      span: '',
+      text: ''
+    },
+    message: {
+      title: '',
+      description: '',
+      labels: {
+        name: '',
+        email: '',
+        telephone: '',
+        message: ''
+      },
+      placeholders: {
+        name: '',
+        email: '',
+        telephone: '',
+        message: ''
+      },
+      sendButton: ''
+    }
+  },
   sideBarList: ['']
 }
