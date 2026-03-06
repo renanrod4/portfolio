@@ -3,23 +3,26 @@
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { Language } from '@/types/languageTypes';
+import Link from 'next/link';
 
-export default function NavBar() {
+export default function NavBar({ setPage }: { setPage: (page: string) => void }) {
 	const langsSize = 25;
-  const {changeLanguage} = useLanguage()|| { changeLanguage: (lang: string) => {} };
+	const { changeLanguage } = useLanguage() || { changeLanguage: (lang: string) => { } };
 
-  function handleclick(e: React.MouseEvent<HTMLLIElement, MouseEvent>) {
-    const lang = (e.currentTarget.firstChild as HTMLImageElement).classList[1];
+	function handleclick(e: React.MouseEvent<HTMLLIElement, MouseEvent>) {
+		const lang = (e.currentTarget.firstChild as HTMLImageElement).classList[1];
 
-    localStorage.setItem('language', lang);
-    changeLanguage(lang as Language);
-    
-  }
+		localStorage.setItem('language', lang);
+		changeLanguage(lang as Language);
+
+	}
 	return (
 		<nav>
 			<ul>
 				<li>
-					<span id="logo">RR</span> <p>Renanrod</p>
+					<Link href="/#" onClick={() => setPage('')}>
+						<span id="logo">RR</span> <p>Renanrod</p>
+					</Link>
 				</li>
 				<li>
 					<ul id="langs">
