@@ -18,7 +18,7 @@ export default function Contact() {
                         </div>
                         <div className="text">
                             <h3>{text.contact.location}</h3>
-                            <p>Vargem Grande Paulista, SP</p>
+                            <p>Vargem Grande Paulista, SP - Brazil</p>
                         </div>
                     </div>
 
@@ -43,9 +43,12 @@ export default function Contact() {
                                 <FaLinkedinIn size="24" />
 
                             </Link>
-                            <Link href="mailto:renanrdemeneses@gmail.com" className="icon email">
-                                <FaEnvelope size="22" />
-                            </Link>
+                            <div className="icon email">
+                                <Link href="mailto:renanrdemeneses@gmail.com">
+                                    <FaEnvelope size="22" />
+                                </Link>
+                                <span>renanrdemeneses@gmail.com</span>
+                            </div>
                         </div>
                     </div>
 
@@ -73,7 +76,7 @@ export default function Contact() {
                             </div>
                             <div className="inputs">
                                 <label>{text.contact.message.labels.telephone} <span>*</span></label>
-                                <input type="text" placeholder={text.contact.message.placeholders.telephone}required />
+                                <input type="text" placeholder={text.contact.message.placeholders.telephone} required />
                             </div>
                         </div>
 
