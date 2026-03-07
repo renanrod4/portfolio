@@ -23,8 +23,8 @@
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
-  aspect-ratio: auto; 
-  height: 100%;       
+  aspect-ratio: auto;
+  height: 100%;
   width: 100%;
   border-radius: 20px;
   border: 1px solid var(--border-color);
@@ -66,7 +66,9 @@
   max-height: 100px;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 20px, transparent);
   backdrop-filter: blur(2px);
-  transition: max-height 0.4s ease-in-out, background 0.3s ease;
+  transition:
+    max-height 0.4s ease-in-out,
+    background 0.3s ease;
 
   h2 {
     font-size: 0.85em;
@@ -76,7 +78,7 @@
   }
 }
 .magic-bento-card:hover .magic-bento-card__content {
-  max-height: 100%; 
+  max-height: 100%;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 40%, transparent);
 }
 .magic-bento-card__header {
@@ -131,6 +133,7 @@
 @media (max-width: 599px) {
   .card-grid {
     grid-template-columns: 1fr;
+    grid-auto-rows: 268px;
     width: 90%;
     margin: 0 auto;
     padding: 0.5em;
@@ -141,35 +144,60 @@
     min-height: 180px;
   }
 }
-
 @media (min-width: 600px) {
   .card-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 200px;
+    width: 98%;
+    margin: 0 auto;
+    gap: 0.5em;
   }
+  .card-grid > :nth-child(4) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .card-grid > :nth-child(1) {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+  .card-grid > :nth-child(2),
+  .card-grid > :nth-child(3) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .card-grid > :nth-child(4) {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+  .card-grid > :nth-child(5) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .card-grid > :nth-child(6){
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  .card-grid > :nth-child(7) {
+    grid-column: span 2;
+    grid-row: span 2;}
 }
-
-@media (min-width: 1024px) {
+@media (min-width: 924px) {
   .card-grid {
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 220px; 
-    gap: .7em; 
+    grid-auto-rows: 220px;
+    gap: 0.7em;
   }
 
-  
-  
-  
-  .card-grid > :nth-child(4) { 
+  .card-grid > :nth-child(4) {
     grid-column: span 2;
     grid-row: span 2;
   }
 
-  
   .card-grid > :nth-child(3) {
     grid-column: span 2;
     grid-row: span 2;
   }
 
-  
   .card-grid > :nth-child(1),
   .card-grid > :nth-child(2) {
     grid-column: span 1;
@@ -184,14 +212,13 @@
     grid-column: span 2;
     grid-row: span 2;
   }
-  
+
   .card-grid > :nth-child(8),
   .card-grid > :nth-child(9) {
     grid-column: span 2;
     grid-row: span 1;
   }
 }
-
 
 .magic-bento-card--border-glow::after {
   content: "";
@@ -251,7 +278,6 @@
     0 4px 20px rgba(46, 24, 78, 0.2),
     0 0 30px var(--purple-glow);
 }
-
 
 .global-spotlight {
   mix-blend-mode: screen;

@@ -42,8 +42,10 @@ nav {
 				display: flex;
 				align-items: center;
 				gap: 4px;
-				text-shadow:none;
-				transition: color 0.3s, text-shadow 0.3s;
+				text-shadow: none;
+				transition:
+					color 0.3s,
+					text-shadow 0.3s;
 				p {
 					font-family: "montserrat", sans-serif;
 					font-weight: 1200;
@@ -60,11 +62,11 @@ nav {
 					font-weight: 400;
 				}
 				&:hover {
-					text-shadow: 0px 0px 10px color-mix(in srgb, var(--accent-color) 50%, transparent);}
+					text-shadow: 0px 0px 10px color-mix(in srgb, var(--accent-color) 50%, transparent);
+				}
 			}
 			&:first-child {
 				margin-right: auto;
-				
 			}
 		}
 	}
@@ -98,7 +100,7 @@ nav {
 		width: fit-content;
 		padding: 30px;
 		padding-top: 40px;
-		background: var(--bg-color);
+		background-color: var(--background-color);
 		box-shadow:
 			inset var(--shadow-color) 10px 10px 15px,
 			color-mix(in srgb, var(--accent-color) 10%, transparent) 8px 8px 30px,
@@ -827,9 +829,99 @@ a {
 		opacity: 0.9;
 		transform: scale(1.05);
 	}
-	@media (max-width: 768px) {
-		.bento-grid {
-			grid-template-columns: 1fr;
+}
+
+@media (max-width: 1050px) {
+	.home {
+		flex-direction: column;
+		.col1 {
+			order: 2;
+			transform: translate(-20%, -25%);
+			p{
+				font-size: 1.1rem;
+			}
+			h1 {
+				font-size: 1.5rem;
+				padding-bottom: 25px;
+			}
+			.chat {
+				transform: translate(20%, 25%);
+			}
+		}
+		.col2 {
+			order: 1;
+			width: 100%;
+			display: flex;
+			justify-content: end;
+			svg {
+				width: 50%;
+				height: auto;
+			}
+		}
+	}
+	.sidebar-container {
+		position: fixed;
+		bottom: 20px;
+		top: auto;
+		left: 50%;
+		translate: -50% 0;
+		z-index: 1000;
+		
+		flex-direction: row;
+		
+		.sidebar {
+			flex-direction: row;
+			padding: 15px 30px;
+			min-width: auto;
+			width: fit-content;
+			box-shadow:
+			0px 10px 30px var(--shadow-color),
+			0px -2px 15px -5px var(--light-shadow-color);
+			
+			.pages {
+				flex-direction: row;
+				gap: 15px;
+				padding: 0;
+				padding-right: 0;
+			}
+
+			.cv-btn {
+				width: auto;
+				max-width: none;
+				margin-top: 0;
+				margin-left: 15px;
+				padding: 8px 16px;
+				font-size: 1rem;
+			}
+			.socials {
+				display: none;
+			}
+		}
+
+		.cv-btn {
+			margin-top: 0;
+			display: none;
+		}
+	}
+	main {
+		margin-left: 0;
+		padding-bottom: 100px;
+	}
+	.contact {
+		padding: 0px 25px;
+		.form-card {
+			max-width: 500px;
+				
+				.inputs {
+					gap: 12px;
+				}
+				input,
+				textarea {
+					width: 100%;
+				}
+				.send-button {
+					width: 100%;
+				}
 		}
 	}
 }
