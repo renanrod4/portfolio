@@ -4,6 +4,7 @@ import { Tourney, Inter, Montserrat, Anonymous_Pro, Average_Sans } from 'next/fo
 import { LanguageProvider } from '@/context/LanguageContext';
 import './layout.css';
 import { cookies } from 'next/headers';
+import { Language } from '@/types/languageTypes';
 
 export const metadata: Metadata = {
 	title: "Renanrod's Portfolio",
@@ -26,18 +27,19 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const cookieStore = await cookies(); 
-	const language = cookieStore.get('language')?.value || 'en-us';
-	return (
-		<html
-			lang={language}
-			className={`${tourney.className} ${inter.className} ${montserrat.className} ${anonymous_pro.className} ${average_sans.className}`}
-		>
-			<head>
-			</head>
-			<body>
-				<LanguageProvider>{children}</LanguageProvider>
-			</body>
-		</html>
-	);
+    const cookieStore = await cookies();
+    const cookieLang = cookieStore.get('language')?.value;
+    
+    const validLangs = ['en-us', 'pt-br', 'de'];
+    const lang = (validLangs.includes(cookieLang as string) ? cookieLang : 'en-us') as Language;
+
+    return (
+        <html lang={lang}>
+            <body>
+                <LanguageProvider initialLanguage={lang}>
+                    {children}
+                </LanguageProvider>
+            </body>
+        </html>
+    );
 }

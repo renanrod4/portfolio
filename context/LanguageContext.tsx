@@ -1,46 +1,41 @@
 'use client';
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useState, useTransition } from 'react';
 import { translations, Language, LanguageContextType } from '@/types/languageTypes';
 
 const LanguageContext = createContext<LanguageContextType | null>(null);
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-	const [language, setLanguage] = useState<Language>('en-us');
-	const [isLoadingLanguageSwitch, setIsLoadingLanguageSwitch] = useState(false);
+export function LanguageProvider({ 
+    children, 
+    initialLanguage 
+}: { 
+    children: React.ReactNode; 
+    initialLanguage: Language 
+}) {
+    const [language, setLanguage] = useState<Language>(initialLanguage);
+    const [isPending, startTransition] = useTransition();
 
-	useEffect(() => {
-		// Check for saved language preference in localStorage
-		const saved = localStorage.getItem('lang') as Language;
-		if (saved) setLanguage(saved);
-	}, []);
+    function changeLanguage(lang: Language) {
+        startTransition(() => {
+            setLanguage(lang);
+        });
+    }
 
-	async function changeLanguage(lang: Language) {
-		// Add a classname to body to hide and show content during language switch 
-		setIsLoadingLanguageSwitch(true);
-		setTimeout(() => {
-			setIsLoadingLanguageSwitch(false);
-			// Change the current language and save preference
-			setLanguage(lang);
-			localStorage.setItem('lang', lang);
-		}, 300);
-	}
-	function isTransitioning() {
-		return isLoadingLanguageSwitch;
-	}
-	return (
-		<LanguageContext.Provider
-			value={{
-				language,
-				text: translations[language],
-				changeLanguage,
-				isTransitioning,
-			}}
-		>
-			{children}
-		</LanguageContext.Provider>
-	);
+    return (
+        <LanguageContext.Provider
+            value={{
+                language,
+                text: translations[language],
+                changeLanguage,
+                isTransitioning: () => isPending,
+            }}
+        >
+            {children}
+        </LanguageContext.Provider>
+    );
 }
 
 export function useLanguage() {
-	return useContext(LanguageContext);
+    const context = useContext(LanguageContext);
+    if (!context) throw new Error("useLanguage must be used within a LanguageProvider");
+    return context;
 }

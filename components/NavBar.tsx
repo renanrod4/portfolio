@@ -5,7 +5,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { Language } from '@/types/languageTypes';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 export default function NavBar({ setPage }: { setPage: (page: string) => void }) {
 	const langsSize = 25;
@@ -14,9 +14,10 @@ export default function NavBar({ setPage }: { setPage: (page: string) => void })
 
 	async function handleclick(e: React.MouseEvent<HTMLLIElement, MouseEvent>) {
 		const lang = (e.currentTarget.firstChild as HTMLImageElement).classList[1];
-		Cookies.set('language', lang, { expires: 365 });	
+		localStorage.setItem('language', lang);
+		Cookies.set('language', lang, { expires: 365 });
 		changeLanguage(lang as Language);
-		// router.refresh();
+		router.refresh();
 	}
 	return (
 		<nav>
