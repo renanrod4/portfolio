@@ -4,17 +4,19 @@ import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { Language } from '@/types/languageTypes';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/router';
 
 export default function NavBar({ setPage }: { setPage: (page: string) => void }) {
 	const langsSize = 25;
 	const { changeLanguage } = useLanguage() || { changeLanguage: (lang: string) => { } };
+	const router = useRouter();
 
-	function handleclick(e: React.MouseEvent<HTMLLIElement, MouseEvent>) {
+	async function handleclick(e: React.MouseEvent<HTMLLIElement, MouseEvent>) {
 		const lang = (e.currentTarget.firstChild as HTMLImageElement).classList[1];
-
-		localStorage.setItem('language', lang);
+		Cookies.set('language', lang, { expires: 365 });	
 		changeLanguage(lang as Language);
-
+		// router.refresh();
 	}
 	return (
 		<nav>

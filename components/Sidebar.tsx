@@ -39,8 +39,8 @@ export default function SideBar({ page, setPage }: { page: string; setPage: (pag
 									${page === 'projects' && i === 2 ? 'active' : ''}
 									${page === 'contact' && i === 3 ? 'active' : ''}`}
 							>
-								<span>{icons[i]}</span>
-								<motion.span layoutDependency={language}>{item}</motion.span>
+								<span className='pageIcons'>{icons[i]}</span>
+								<motion.span className="pageNames" layoutDependency={language}>{item}</motion.span>
 							</Link>
 						</motion.li>
 					))}

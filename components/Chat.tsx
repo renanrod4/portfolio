@@ -3,9 +3,10 @@ import { ChatMessage } from "@/types/types";
 import React, { useState } from "react";
 import { FaPaperPlane } from "react-icons/fa6";
 
-export default function Chat({ text }: { text: typeof languageJsonStructure }) {
+export default function Chat({ text, language }: { text: typeof languageJsonStructure; language: string }) {
 	const [inputChat, setInputChat] = useState('');
 	const [chatMessages, setChatMessages] = useState<Array<ChatMessage>>([]);
+	console.log(language)
 	function handleSubmitChat(e: React.FormEvent) {
 		e.preventDefault();
 		if (!inputChat.trim()) return;
@@ -52,8 +53,8 @@ export default function Chat({ text }: { text: typeof languageJsonStructure }) {
 				))}
 			</div>
 			<div className="chatInputContainer">
-				<input type="text" placeholder={text?.home.chatPlaceHolder} value={inputChat} onChange={(e) => setInputChat(e.target.value)} />
-				<button onClick={handleSubmitChat} ><FaPaperPlane size={20} /></button>
+				<input type="text" name="chat" id="chat" autoComplete="off"	placeholder={text?.home.chatPlaceHolder} value={inputChat} onChange={(e) => setInputChat(e.target.value)} />
+				<button onClick={handleSubmitChat} className={language}><FaPaperPlane size={20} /></button>
 			</div>
 		</div>
 	)

@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 
 export default function Home() {
-	const { text } = useLanguage() || { text: languageJsonStructure };
+	const { text, language } = useLanguage() || { text: languageJsonStructure };
 	const hour = new Date().getHours();
 	const dinamycText =
 		hour < 12 ? text?.home.welcome.morning : hour < 18 ? text?.home.welcome.afternoon : text?.home.welcome.evening;
@@ -15,12 +15,19 @@ export default function Home() {
 		<div className="home">
 			<div className="col1">
 				<h1>
-					{dinamycText} <span className='hello' >👋</span>
+					{dinamycText?.split(',').map((part, index) => (
+						index === 0 ? (
+							<span key={index} className="greeting">{part},</span>
+						) : (
+							<span key={index}>{part}</span>
+						)
+					))}
+					<span className='hello'>👋</span>
 				</h1>
 				{text?.home.description.split('\n').map((line, index) => (
 					<p key={index}>{line}</p>
 				))}
-				<Chat text={text} />
+				<Chat text={text} language={language||""} />
 			</div>
 			<div className="col2">
 				<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
