@@ -27,10 +27,10 @@ export default function Home() {
 				{text?.home.description.split('\n').map((line, index) => (
 					<p key={index}>{line}</p>
 				))}
-				<Chat text={text} language={language||""} />
+				<Chat text={text} language={language || ""} />
 			</div>
 			<div className="col2">
-				<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+				<svg viewBox="20 20 142 160" xmlns="http://www.w3.org/2000/svg">
 					<defs>
 						{/* 1. Molde da imagem (levemente menor para criar a margem) */}
 						<clipPath id="meuBlob">
@@ -52,10 +52,10 @@ export default function Home() {
 
 					<image
 						href="/images/pfp.jpeg"
-						width='80%'
-						height='80%'
-						y='30'
-						x='15'
+						width='100%'
+						height='100%'
+						y='33'
+						x='23'
 						clipPath="url(#meuBlob)"
 						preserveAspectRatio="xMidYMid slice"
 

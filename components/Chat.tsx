@@ -6,7 +6,6 @@ import { FaPaperPlane } from "react-icons/fa6";
 export default function Chat({ text, language }: { text: typeof languageJsonStructure; language: string }) {
 	const [inputChat, setInputChat] = useState('');
 	const [chatMessages, setChatMessages] = useState<Array<ChatMessage>>([]);
-	console.log(language)
 	function handleSubmitChat(e: React.FormEvent) {
 		e.preventDefault();
 		if (!inputChat.trim()) return;

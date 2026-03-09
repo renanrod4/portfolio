@@ -218,7 +218,7 @@ nav {
 	}
 }
 main {
-	margin-left: 350px;
+	margin-left: 18%;
 }
 .home {
 	flex: 1;
@@ -228,9 +228,11 @@ main {
 	justify-content: center;
 	align-items: center;
 	font-family: "Inter", sans-serif;
+	margin-left: 5%;
 	.col1 {
 		display: flex;
-		min-width: 60%;
+		/* min-width: 60%; */
+		max-width: 60%;
 		flex-direction: column;
 		align-items: center;
 		h1 {
@@ -259,8 +261,10 @@ main {
 	}
 	.col2 {
 		height: 100%;
-
+		max-width: 30%;
 		svg {
+			width: 100%;
+			min-width: 300px;
 			transition: transform 0.3s;
 		}
 	}
@@ -439,7 +443,8 @@ main {
 	border-radius: 15px;
 	margin-top: 65px;
 	width: 100%;
-	max-width: 700px;
+	max-width: 80%;
+	min-width: 500px;
 	height: 300px;
 	border: 2px solid var(--border-color);
 	box-shadow:
@@ -836,10 +841,11 @@ a {
 	}
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1110px) {
 	.home {
 		flex-direction: column;
-		align-items: start;
+		align-items: center;
+		margin-left: 0;
 		.col1,
 		.col2 {
 			width: 70%;
@@ -847,8 +853,7 @@ a {
 		.col1 {
 			order: 2;
 			padding-left: 50px;
-			align-items: flex-start;
-			transform: translate(0, -200px);
+			align-items: center;
 			p {
 				font-size: 1.2rem;
 				margin: 0 auto;
@@ -858,9 +863,9 @@ a {
 				font-size: 1.7rem;
 				margin: 0 auto;
 				padding-bottom: 25px;
-			}
-			.chat {
-				transform: translate(20%, 25%);
+				.greeting {
+					display: inline;
+				}
 			}
 		}
 		.col2 {
@@ -871,6 +876,15 @@ a {
 			svg {
 				width: 50%;
 				height: auto;
+			}
+		}
+	}
+	.skills {
+		.tech-skills {
+			.skills-categories {
+				width: auto;
+				justify-content: center;
+				gap: 2%;
 			}
 		}
 	}
@@ -967,7 +981,30 @@ a {
 		}
 	}
 }
-@media (max-width: 660px) {
+@media (max-width: 864) {
+	.skills {
+		.tech-skills {
+			.skills-categories {
+				flex-direction: column;
+				height: 100lvh;
+				flex-wrap: wrap;
+				justify-content: center;
+				width: auto;
+				column-gap: 10px;
+				row-gap: 30px;
+			}
+		}
+	}
+}
+@media (max-width: 740px) {
+	.home {
+		.col1 {
+			max-width: 78%;
+			p{
+				text-indent:0 ;
+			}
+		}
+	}
 	.sidebar-container {
 		.sidebar {
 			padding: 15px;
@@ -1007,6 +1044,10 @@ a {
 		}
 	}
 	.home {
+		.col1,.col2{
+			width: 100%;
+			max-width: none;
+		}
 		.col1 {
 			h1 {
 				font-size: 1.2rem;
@@ -1022,6 +1063,10 @@ a {
 			}
 		}
 	}
+	.chat {
+		max-width: 90%;	
+		min-width: auto;
+	}
 }
 
 @media (max-width: 370px) {
@@ -1032,7 +1077,6 @@ a {
 			width: 100%;
 		}
 		.col1 {
-			width: 100%;
 			h1 {
 				font-size: 1.5rem;
 				.greeting {
@@ -1066,8 +1110,8 @@ a {
 					justify-content: center;
 					align-self: center;
 					text-align: center;
-					svg{
-						transform: translateY(2px)
+					svg {
+						transform: translateY(2px);
 					}
 					&::after {
 						content: "";
