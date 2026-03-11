@@ -137,7 +137,8 @@
 				"telephone": "(99) 99999-9999",
 				"message": "Como posso te ajudar?"
 			},
-			"sendButton": "Enviar Mensagem"
+			"sendButton": "Enviar Mensagem",
+			"sending": "Enviando..."
 		}
 	},
 	"sideBarList": [

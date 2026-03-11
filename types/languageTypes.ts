@@ -82,6 +82,7 @@ type LanguageStructure = {
         message: string
       }
       sendButton: string
+      sending: string
     }
   }
   sideBarList: string[]
@@ -183,7 +184,8 @@ export const languageJsonStructure: LanguageStructure = {
         telephone: '',
         message: ''
       },
-      sendButton: ''
+      sendButton: '',
+      sending: ''
     }
   },
   sideBarList: ['']

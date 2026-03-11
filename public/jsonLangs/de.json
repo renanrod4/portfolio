@@ -137,7 +137,8 @@
 				"telephone": "+49 (0) 123 456789",
 				"message": "Wie kann ich dir helfen?"
 			},
-			"sendButton": "Nachricht senden"
+			"sendButton": "Nachricht senden",
+			"sending": "Senden..."
 		}
 	},
 	"sideBarList": [
