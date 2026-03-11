@@ -70,16 +70,19 @@ export default function Contact() {
                         <div className="links">
                             <Link href="https://github.com/renanrod4" className="icon github">
                                 <FaGithubAlt size="24" />
+                                <span>Github</span>
                             </Link>
                             <Link href="https://www.linkedin.com/in/renanrod4/" className="icon linkedin">
                                 <FaLinkedinIn size="24" />
-
+                                <span>LinkedIn</span>
                             </Link>
                             <div className="icon email">
                                 <Link href="mailto:renanrdemeneses@gmail.com">
                                     <FaEnvelope size="22" />
+                                    
                                 </Link>
-                                <span>renanrdemeneses@gmail.com</span>
+                                <span className="longName">renanrdemeneses@gmail.com</span>
+                                <span className="shortName">E-Mail</span>
                             </div>
                         </div>
                     </div>

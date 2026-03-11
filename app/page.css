@@ -218,7 +218,7 @@ nav {
 	}
 }
 main {
-	margin-left: 18%;
+	margin-left: min(300px, 27%);
 }
 .home {
 	flex: 1;
@@ -291,7 +291,9 @@ main {
 			display: flex;
 			list-style: none;
 			padding: 0;
-			width: 80%;
+			/* width: 80%; */
+			width: 100%;
+			max-width: 1200px;
 			justify-content: space-evenly;
 
 			.skills-category {
@@ -587,6 +589,7 @@ a {
 	flex-direction: column;
 	align-items: flex-start;
 	padding-top: 50px;
+	margin-left: min(50px, 10%);
 	h1 {
 		font-family: "Anonymous Pro", monospace;
 		font-weight: 400;
@@ -600,12 +603,77 @@ a {
 .contact {
 	max-width: 1200px;
 	margin: 50px auto;
+
 	padding: 20px;
 
 	.bento-grid {
 		display: grid;
 		grid-template-columns: 1fr 1.5fr;
 		gap: 20px;
+		@media (max-width: 1110px) and (min-width: 1000px) {
+			grid-template-columns: 0.5fr 1fr;
+		}
+		@media (max-width: 1000px) {
+			grid-template-columns: 1fr;
+			.socials .links .icon {
+				width: 100%;
+				&.github,
+				&.linkedin {
+					padding: 10px;
+					span {
+						display: inline;
+						margin-left: 8px;
+					}
+					svg {
+						display: inline;
+						max-width: none;
+						opacity: 1;
+					}
+				}
+				&.email {
+					width: 100%;
+					padding: 10px;
+					span {
+						display: inline;
+						max-width: none;
+						opacity: 1;
+						margin-left: 8px;
+					}
+				}
+			}
+			.quick-response-card {
+				span {
+					display: block;
+					font-size: 1.05rem;
+				}
+			}
+			.form-card {
+				.send-button {
+					width: 100%;
+				}
+			}
+		}
+		@media (max-width: 600px) {
+			.socials .links .icon {
+				svg {
+					width: 18px;
+				}
+				span {
+					font-size: 0.85rem;
+				}
+				&.email {
+					span {
+						font-size: 0.85rem;
+						&.longName {
+							display: none;
+						}
+						&.shortName {
+							display: inline-block;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	.left-column {
@@ -687,6 +755,13 @@ a {
 				&:hover {
 					background-color: var(--accent-color);
 				}
+				span {
+					display: none;
+					font-size: 0.9rem;
+					color: var(--text-color);
+					font-weight: bold;
+					text-shadow: 0px 0px 10px color-mix(in srgb, var(--accent-color) 50%, transparent);
+				}
 				&.email {
 					width: fit-content;
 					padding: 0 12px;
@@ -705,6 +780,9 @@ a {
 						color: var(--text-color);
 						font-weight: bold;
 						text-shadow: 0px 0px 10px color-mix(in srgb, var(--accent-color) 50%, transparent);
+						&.shortName {
+							display: none;
+						}
 					}
 
 					svg {
@@ -781,6 +859,17 @@ a {
 			gap: 15px;
 			margin-bottom: 15px;
 		}
+		@media ((max-width: 1430px) and (min-width: 1110px)) or (max-width: 1000px) {
+			align-items: stretch;
+			text-align: center;
+			label {
+				text-align: start;
+			}
+			.form-row {
+				width: 100%;
+				grid-template-columns: 1fr;
+			}
+		}
 	}
 
 	.inputs {
@@ -800,6 +889,10 @@ a {
 
 	input,
 	textarea {
+		width: 100%;
+		min-width: 0;
+		box-sizing: border-box;
+
 		background-color: var(--background-color);
 		border: 1px solid var(--border-color);
 		border-radius: 15px;
@@ -840,7 +933,12 @@ a {
 		transform: scale(1.05);
 	}
 }
-
+@media (max-width: 1300px) {
+	.projects {
+		margin-left: min(80px, 8%);
+		transform: scale(0.95);
+	}
+}
 @media (max-width: 1110px) {
 	.home {
 		flex-direction: column;
@@ -936,22 +1034,13 @@ a {
 		margin-left: 0;
 		padding-bottom: 100px;
 	}
+	.projects {
+		margin-left: 0;
+		transform: scale(1);
+	}
 	.contact {
 		padding: 0px 25px;
-		.form-card {
-			max-width: 500px;
-
-			.inputs {
-				gap: 12px;
-			}
-			input,
-			textarea {
-				width: 100%;
-			}
-			.send-button {
-				width: 100%;
-			}
-		}
+		margin: 50px auto;
 	}
 }
 @media (max-width: 950px) {
@@ -980,6 +1069,13 @@ a {
 			}
 		}
 	}
+	.contact {
+		padding: 0px;
+		margin: 0 20px;
+	}
+	main {
+		justify-content: center;
+	}
 }
 @media (max-width: 864) {
 	.skills {
@@ -1005,6 +1101,11 @@ a {
 			}
 		}
 	}
+	.skills{
+		h1 {
+			font-size: 2.5rem;
+		}
+	}
 	.sidebar-container {
 		.sidebar {
 			padding: 15px;
@@ -1027,12 +1128,19 @@ a {
 
 @media (max-width: 624px) {
 	.skills {
+		h1 {
+			font-size: 2.1rem;
+		}
 		.tech-skills {
 			.skills-categories {
 				flex-direction: row;
 				height: auto;
 			}
 		}
+	}
+	.chat {
+		max-width: 95%;
+		min-width: auto;
 	}
 }
 
@@ -1075,14 +1183,11 @@ a {
 			}
 		}
 	}
-	.chat {
-		max-width: 90%;
-		min-width: auto;
-	}
 	.skills {
 		h1 {
 			margin-top: 20px;
-			font-size: 2.3rem;
+			font-size: 1.7rem;
+			text-align: center;
 		}
 		.tech-skills {
 			.skills-categories {
@@ -1091,7 +1196,7 @@ a {
 					align-items: center;
 					h2 {
 						text-align: center;
-						font-size: 1.5rem;
+						font-size: 1.4rem;
 						margin-bottom: 0;
 						margin-top: 10px;
 						height: auto;
@@ -1139,7 +1244,7 @@ a {
 		}
 		.language-skills {
 			ul {
-				width:90%;
+				width: 90%;
 				li {
 					.image {
 						width: 25px;
