@@ -2,8 +2,7 @@
 import { useLanguage } from '@/context/LanguageContext';
 import { languageJsonStructure } from '@/types/languageTypes';
 import Chat from '../Chat';
-import Image from 'next/image';
-
+import CvBtn from '../CvBtn';
 
 export default function Home() {
 	const { text, language } = useLanguage() || { text: languageJsonStructure };
@@ -35,7 +34,7 @@ export default function Home() {
 						<clipPath id="meuBlob">
 							<path
 								d="M46.7,-48.4C57.5,-35.8,61.2,-17.9,60.5,-0.7C59.8,16.6,54.8,33.1,43.9,45.4C33.1,57.7,16.6,65.7,4.7,61.1C-7.2,56.4,-14.5,39,-29.9,26.8C-45.3,14.5,-68.9,7.2,-75.9,-7C-82.8,-21.2,-73.2,-42.3,-57.7,-54.9C-42.3,-67.5,-21.2,-71.4,-1.6,-69.8C17.9,-68.2,35.8,-61,46.7,-48.4Z"
-								transform="translate(100 100) scale(0.95)" 
+								transform="translate(100 100) scale(0.95)"
 							/>
 						</clipPath>
 					</defs>
@@ -60,6 +59,7 @@ export default function Home() {
 					/>
 				</svg>
 			</div>
+			 <CvBtn />
 		</div>
 	);
 }

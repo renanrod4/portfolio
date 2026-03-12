@@ -6,6 +6,7 @@ import { IoHome } from 'react-icons/io5';
 import { FaCode, FaFolder, FaGithubAlt, FaLinkedinIn } from 'react-icons/fa6';
 import { FaPhoneAlt } from 'react-icons/fa';
 import Link from 'next/link';
+import CvBtn from './CvBtn';
 
 export default function SideBar({ page, setPage }: { page: string; setPage: (page: string) => void }) {
 	const { text, language } = useLanguage() || { text: languageJsonStructure };
@@ -59,9 +60,7 @@ export default function SideBar({ page, setPage }: { page: string; setPage: (pag
 					</li>
 				</motion.ul>
 			</motion.aside>
-			<button className="cv-btn" onClick={() => window.open('/curriculo.pdf', '_blank')}>
-				{text?.home.curriculum}
-			</button>
+			<CvBtn />
 		</div>
 	);
 }
