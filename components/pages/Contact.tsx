@@ -1,134 +1,187 @@
-import { sendEmailAction } from "@/app/actions";
-import { useLanguage } from "@/context/LanguageContext";
-import { languageJsonStructure } from "@/types/languageTypes";
-import Link from "next/link";
-import {  useState } from "react";
-import { FaGithubAlt, FaLinkedinIn, FaLocationDot, FaEnvelope } from "react-icons/fa6";
+import { sendEmailAction } from '@/app/actions';
+import { useLanguage } from '@/context/LanguageContext';
+import { languageJsonStructure } from '@/types/languageTypes';
+import Link from 'next/link';
+import { useState } from 'react';
+import { FaGithubAlt, FaLinkedinIn, FaLocationDot, FaEnvelope } from 'react-icons/fa6';
+import Popup from '../Popup';
 
 export default function Contact() {
-    // form use States
-    const [name, setName] =useState("");
-    const [email, setEmail] =useState("");
-    const [telephone, setTelephone] =useState("");
-    const [message, setMessage] =useState("");
+	// form use States
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [telephone, setTelephone] = useState('');
+	const [message, setMessage] = useState('');
+	const [isSending, setIsSending] = useState(false);
+	const [openPopup, setOpenPopup] = useState(false);
+    const [isAnimatingOut, setIsAnimatingOut] = useState(false); 
 
-    const [isSending, setIsSending] = useState(false);
-
-    async function handleSubmit(formData: FormData) { 
-    setIsSending(true);
-    
-    const result = await sendEmailAction({ name, email, telephone, message });
-
-    if (result.success) {
-        // pushNotification({
-        //     title: "Mensagem enviada!",
-        //     message: "Sua mensagem foi enviada com sucesso. Entrarei em contato em breve.",
-        //     type: "success",
-        // });
-        setName("");
-        setEmail("");
-        setTelephone("");
-        setMessage("");
-    } else {
-        alert("Erro ao enviar mensagem.");
+    function handleClosePopup() {
+        setIsAnimatingOut(true); 
+        
+        setTimeout(() => {
+            setOpenPopup(false);   
+            setIsAnimatingOut(false); 
+        }, 500); 
     }
-    
-    setIsSending(false);
-}
-    
-    const { text } = useLanguage() || { text: languageJsonStructure };
 
-    return (
-        <div className="contact">
-            <div className="bento-grid">
+	async function handleSubmit() {
+		setIsSending(true);
 
-                <div className="left-column">
+		const result = await sendEmailAction({ name, email, telephone, message });
 
-                    <div className="card">
-                        <div className="icon">
-                            <FaLocationDot />
-                        </div>
-                        <div className="text">
-                            <h3>{text.contact.location}</h3>
-                            <p>Vargem Grande Paulista, SP - Brazil</p>
-                        </div>
-                    </div>
+		if (result.success) {
+            setOpenPopup(true);
+            setTimeout(() => {
+                handleClosePopup();
+            }, 10000);
+			setName('');
+			setEmail('');
+			setTelephone('');
+			setMessage('');
+		} else {
+			alert('Erro ao enviar mensagem.');
+		}
 
-                    <div className="card">
-                        <div className="icon">
-                            <FaEnvelope size="18" />
+		setIsSending(false);
+	}
 
-                        </div>
-                        <div className="text">
-                            <h3>{text.contact.email}</h3>
-                            <p>renanrdemeneses@gmail.com</p>
-                        </div>
-                    </div>
+	const { text } = useLanguage() || { text: languageJsonStructure };
 
-                    <div className="card socials">
-                        <h3>{text.contact.socialsMessage}</h3>
-                        <div className="links">
-                            <Link href="https://github.com/renanrod4" className="icon github">
-                                <FaGithubAlt size="24" />
-                                <span>Github</span>
-                            </Link>
-                            <Link href="https://www.linkedin.com/in/renanrod4/" className="icon linkedin">
-                                <FaLinkedinIn size="24" />
-                                <span>LinkedIn</span>
-                            </Link>
-                            <div className="icon email">
-                                <Link href="mailto:renanrdemeneses@gmail.com">
-                                    <FaEnvelope size="22" />
-                                    
-                                </Link>
-                                <span className="longName">renanrdemeneses@gmail.com</span>
-                                <span className="shortName">E-Mail</span>
-                            </div>
-                        </div>
-                    </div>
+	return (
+		<>
+			<div className="contact">
+				<div className="bento-grid">
+					<div className="left-column">
+						<div className="card">
+							<div className="icon">
+								<FaLocationDot />
+							</div>
+							<div className="text">
+								<h3>{text.contact.location}</h3>
+								<p>Vargem Grande Paulista, SP - Brazil</p>
+							</div>
+						</div>
 
-                    <div className="card quick-response-card">
-                        <p>
-                            <span>{text.contact.quickResponse.span}</span> {text.contact.quickResponse.text}
-                        </p>
-                    </div>
+						<div className="card">
+							<div className="icon">
+								<FaEnvelope size="18" />
+							</div>
+							<div className="text">
+								<h3>{text.contact.email}</h3>
+								<p>renanrdemeneses@gmail.com</p>
+							</div>
+						</div>
 
-                </div>
+						<div className="card socials">
+							<h3>{text.contact.socialsMessage}</h3>
+							<div className="links">
+								<Link href="https://github.com/renanrod4" className="icon github">
+									<FaGithubAlt size="24" />
+									<span>Github</span>
+								</Link>
+								<Link href="https://www.linkedin.com/in/renanrod4/" className="icon linkedin">
+									<FaLinkedinIn size="24" />
+									<span>LinkedIn</span>
+								</Link>
+								<div className="icon email">
+									<Link href="mailto:renanrdemeneses@gmail.com">
+										<FaEnvelope size="22" />
+									</Link>
+									<span className="longName">renanrdemeneses@gmail.com</span>
+									<span className="shortName">E-Mail</span>
+								</div>
+							</div>
+						</div>
 
-                <div className="card form-card">
-                    <h2>{text.contact.message.title}</h2>
-                    <p>{text.contact.message.description}</p>
-                    <form action={handleSubmit}>
-                        <div className="inputs">
-                            <label>{text.contact.message.labels.name}<span>*</span></label>
-                            <input name="name" type="text" placeholder={text.contact.message.placeholders.name} required value={name} onChange={(e) => setName(e.target.value)} />
-                        </div>
+						<div className="card quick-response-card">
+							<p>
+								<span>{text.contact.quickResponse.span}</span> {text.contact.quickResponse.text}
+							</p>
+						</div>
+					</div>
 
-                        <div className="form-row">
-                            <div className="inputs">
-                                <label>{text.contact.message.labels.email} <span>*</span></label>
-                                <input name="email" type="email" placeholder={text.contact.message.placeholders.email} required value={email} onChange={(e) => setEmail(e.target.value)} />
-                            </div>
-                            <div className="inputs">
-                                <label>{text.contact.message.labels.telephone} <span>*</span></label>
-                                <input name="telephone" type="text" placeholder={text.contact.message.placeholders.telephone} required value={telephone} onChange={(e) => setTelephone(e.target.value)} />
-                            </div>
-                        </div>
+					<div className="card form-card">
+						<h2>{text.contact.message.title}</h2>
+						<p>{text.contact.message.description}</p>
+						<form action={handleSubmit}>
+							<div className="inputs">
+								<label>
+									{text.contact.message.labels.name}
+									<span>*</span>
+								</label>
+								<input
+									name="name"
+									type="text"
+									placeholder={text.contact.message.placeholders.name}
+									required
+									value={name}
+									onChange={e => setName(e.target.value)}
+								/>
+							</div>
 
-                        <div className="inputs">
-                            <label>{text.contact.message.labels.message} <span>*</span></label>
-                            <textarea name="message" rows={6} placeholder={text.contact.message.placeholders.message} required value={message} onChange={(e) => setMessage(e.target.value)} >
+							<div className="form-row">
+								<div className="inputs">
+									<label>
+										{text.contact.message.labels.email} <span>*</span>
+									</label>
+									<input
+										name="email"
+										type="email"
+										placeholder={text.contact.message.placeholders.email}
+										required
+										value={email}
+										onChange={e => setEmail(e.target.value)}
+									/>
+								</div>
+								<div className="inputs">
+									<label>
+										{text.contact.message.labels.telephone} <span>*</span>
+									</label>
+									<input
+										name="telephone"
+										type="text"
+										placeholder={text.contact.message.placeholders.telephone}
+										required
+										value={telephone}
+										onChange={e => setTelephone(e.target.value)}
+									/>
+								</div>
+							</div>
 
-                            </textarea>
-                        </div>
-
-                        <button type="submit" className="send-button" disabled={isSending} >
-                            {isSending ? text.contact.message.sending : text.contact.message.sendButton}
-                        </button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    );
+							<div className="inputs">
+								<label>
+									{text.contact.message.labels.message} <span>*</span>
+								</label>
+								<textarea
+									name="message"
+									rows={6}
+									placeholder={text.contact.message.placeholders.message}
+									required
+									value={message}
+									onChange={e => setMessage(e.target.value)}
+								></textarea>
+							</div>
+							{/* Temporarily opening the popup on button click, since the email sending is mocked and doesn't return a success response */}
+							<button
+								type="submit"
+								className="send-button"
+								disabled={isSending}
+							>
+								{isSending ? text.contact.message.sending : text.contact.message.sendButton}
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			{openPopup && (
+                <Popup
+                    title="Mensagem Enviada!"
+                    message="Obrigado por entrar em contato! Responderei o mais breve possível!"
+                    show={!isAnimatingOut} 
+                    onClose={handleClosePopup}
+                />
+            )}
+		</>
+	);
 }

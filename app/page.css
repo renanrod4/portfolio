@@ -914,6 +914,63 @@ a {
 		transform: scale(1.05);
 	}
 }
+@keyframes popupIn {
+	0% {
+		transform: translate(500px, 0);
+	}
+	100% {
+		transform: translate(-10px, 0);
+	}
+}
+@keyframes popupOut {
+	0% {
+		transform: translate(-10px, 0);
+	}
+	100% {
+		transform: translate(500px, 0);
+	}
+}
+.popup {
+	position: fixed;
+	top: 10%;
+	right: 0%;
+	max-width: 400px;
+	transform: translate(-20px, 0);
+	background-color: var(--alt-background-color);
+	box-shadow:
+		inset color-mix(in srgb, #000000 100%, transparent) 0px 0px 10px,
+		var(--light-shadow-color) -1px -1px 4px -1px,
+		var(--shadow-color) 8px 8px 15px;
+	border: 2px solid var(--accent-color);
+	border-radius: 15px;
+	padding: 20px;
+
+	z-index: 1001;
+	text-align: center;
+	h2 {
+		margin: 0;
+		font-size: 1.5rem;
+		color: var(--text-color);
+	}
+	.close {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		cursor: pointer;
+		color: var(--accent-color);
+		transition: filter 0.3s, transform 0.3s;
+		&:hover {
+			filter: drop-shadow(0 0 3px var(--accent-color));
+			transform: scale(1.1);
+		}
+	}
+	&.open {
+		animation: popupIn 0.5s ease-in;
+	}
+	&.close {
+		animation: popupOut 0.5s ease-out;
+	}
+}
 @media (max-width: 1300px) {
 	.projects {
 		margin-left: min(80px, 8%);
