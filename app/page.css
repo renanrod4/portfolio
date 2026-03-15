@@ -934,7 +934,7 @@ a {
 	position: fixed;
 	top: 10%;
 	right: 0%;
-	max-width: 400px;
+	max-width: min(400px,90%);
 	transform: translate(-20px, 0);
 	background-color: var(--alt-background-color);
 	box-shadow:

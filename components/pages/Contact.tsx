@@ -167,6 +167,7 @@ export default function Contact() {
 								type="submit"
 								className="send-button"
 								disabled={isSending}
+                                onClick={() => {setOpenPopup(true)}}
 							>
 								{isSending ? text.contact.message.sending : text.contact.message.sendButton}
 							</button>
