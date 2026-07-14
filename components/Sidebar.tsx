@@ -11,7 +11,6 @@ import CvBtn from './CvBtn';
 export default function SideBar({ page, setPage }: { page: string; setPage: (page: string) => void }) {
 	const { text, language } = useLanguage() || { text: languageJsonStructure };
 	const icons = [<IoHome />, <FaCode />, <FaFolder />, <FaPhoneAlt />];
-
 	return (
 		<div className="sidebar-container">
 			<motion.aside
@@ -49,12 +48,12 @@ export default function SideBar({ page, setPage }: { page: string; setPage: (pag
 
 				<motion.ul layout layoutDependency={language} className="socials">
 					<li className="github">
-						<button>
+						<button onClick={() => window.open('https://github.com/renanrod4')}>
 							<FaGithubAlt size="28" />
 						</button>
 					</li>
 					<li className="linkedin">
-						<button>
+						<button onClick={() => window.open('https://linkedin.com/in/renanrod4')}>
 							<FaLinkedinIn size="28" />
 						</button>
 					</li>
