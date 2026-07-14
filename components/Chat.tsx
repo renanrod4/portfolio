@@ -17,7 +17,7 @@ export default function Chat({ text, language }: { text: typeof languageJsonStru
 			const response = await fetch('/api/chat', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ message: newUserMessage.content }),
+				body: JSON.stringify({ message: newUserMessage.content, language }),
 			});
 			const data = await response.json();
 			const newAIMessage: ChatMessage = { role: 'ai', content: data.response };
