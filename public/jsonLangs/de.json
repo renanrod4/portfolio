@@ -83,35 +83,35 @@
 			"link": "https://silhouettle.vercel.app/",
 			"image": "silhouettle.png"
 		},
-		"Periodic Table Game": {
-			"description": "Lernen Sie das Periodensystem mit diesem interaktiven Quiz auswendig.",
-			"link": "https://github.com/renanrod4/Periodic-Table-game",
-			"image": "periodic-table-game.png"
-		},
-		"Forkify": {
-			"description": "Eine Rezept-Suchmaschine, die es Benutzern ermöglicht, ihre Lieblingsrezepte aus dem gesamten Web zu finden, zu speichern und zu teilen.",
-			"link": "https://renanrod-forkify.netlify.app/",
-			"image": "forkify.png"
-		},
-		"Interior Consultant": {
-			"description": "Eine UI/UX-Herausforderung von devchallenges.io. Eine Website für Innenarchitekturberatung mit einem modernen und eleganten Design.",
-			"link": "https://interior-consultant-master-sandy.vercel.app/",
-			"image": "interior-consultant.png"
-		},
 		"RR's Dealership": {
 			"description": "Eine Autohaus-Website mit modernem und elegantem Design, die über 70 Autovarianten bietet, von denen jede eine individuelle Detailseite hat.",
 			"link": "https://rr-dealership.vercel.app/",
 			"image": "rr-dealership.png"
 		},
-		"Car Rental": {
-			"description": "Die Verwirklichung einer Autovermietungs-UI, die ich auf Pinterest gefunden habe. Die Website präsentiert ein modernes und elegantes Design.",
-			"link": "https://car-rental-psi.vercel.app/",
-			"image": "car-rental.png"
+		"FrankAI": {
+			"description": "FrankAI ist eine innovative Plattform, die künstliche Intelligenz nutzt, um Benutzern zu helfen, ihre Projekte effizienter zu verwalten und zu optimieren. Mit fortschrittlichen Algorithmen und benutzerfreundlichen Tools bietet FrankAI personalisierte Empfehlungen und Einblicke, die auf den spezifischen Bedürfnissen jedes Projekts basieren.",
+			"link": "https://github.com/renanrod4/frankai",
+			"image": "frankai.png"
 		},
-		"Github Profile": {
-			"description": "Wenn Sie mehr Projekte kennenlernen oder ein wenig mehr über mich erfahren möchten, besuchen Sie mein Github-Profil.",
-			"link": "https://github.com/renanrod4/",
-			"image": "github-profile.png"
+		"Helio-sync": {
+			"description": "Eine Anwendung zur Dateisynchronisation zwischen Geräten, mit Fokus auf Privatsphäre und Sicherheit.",
+			"link": "https://helio-sync.vercel.app",
+			"image": "helio-sync.png"
+		},
+		"Gerenciador de despesas": {
+			"description": "Eine Anwendung zur Verwaltung persönlicher Finanzen, die es Benutzern ermöglicht, ihre Ausgaben zu verfolgen, Budgets zu erstellen und finanzielle Ziele zu setzen.",
+			"link": "https://gerenciador-de-despesas.vercel.app/",
+			"image": "gerenciador-de-despesas.png"
+		},
+		"Dritec": {
+			"description": "Dritec ist eine innovative Plattform, die darauf abzielt, die Effizienz und Produktivität von Unternehmen durch den Einsatz modernster Technologien und intelligenter Lösungen zu steigern. Mit einem Fokus auf Benutzerfreundlichkeit und Anpassungsfähigkeit bietet Dritec maßgeschneiderte Tools, die den spezifischen Anforderungen jedes Unternehmens gerecht werden.",
+			"link": "https://dritec.vercel.app/",
+			"image": "dritec.png"
+		},
+		"Uniso-Flow": {
+			"description": "Uniso-Flow ist eine fortschrittliche Plattform, die entwickelt wurde, um den akademischen Fluss und die Klassenbalance an der Universidade de Sorocaba (UNISO) zu optimieren. Durch den Einsatz modernster Algorithmen und Datenanalyse-Tools ermöglicht Uniso-Flow eine effiziente Verwaltung von Kursen, Ressourcen und Zeitplänen, um ein ausgewogenes und effektives Lernumfeld für Studenten und Dozenten zu schaffen.",
+			"link": "https://github.com/renanrod4/uniso-flow",
+			"image": "uniso-flow.png"
 		}
 	},
 	"contact": {

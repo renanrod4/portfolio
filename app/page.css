@@ -980,7 +980,9 @@ a {
 	.projects {
 		margin-left: 0;
 		.card-grid {
-			margin-left: 0;
+			margin: 0;
+			width: 100%;
+			
 		}
 	}
 	.contact {

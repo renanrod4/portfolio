@@ -12,8 +12,8 @@ export const translations = {
 export type Language = 'pt-br' | 'en-us' | 'de';
 type ProjectKeys = 
   | 'OctoDev' | 'FlexyApi' | 'Silhouettle' 
-  | 'Periodic Table Game' | 'Forkify' | 'Interior Consultant' 
-  | "RR's Dealership" | 'Car Rental' | 'Github Profile';
+  | 'Helio-sync' | 'Gerenciador de despesas' | 'FrankAI' 
+  | "RR's Dealership" | 'Dritec' | 'Uniso-Flow';
 
 export type LanguageContextType = {
   language: Language;
@@ -130,17 +130,17 @@ export const languageJsonStructure: LanguageStructure = {
       link: '',
       image: ''
     },
-    'Periodic Table Game': {
+    'Helio-sync': {
       description: '',
       link: '',
       image: ''
     },
-    'Forkify': {
+    'Gerenciador de despesas': {
       description: '',
       link: '',
       image: ''
     },
-    'Interior Consultant': {
+    'FrankAI': {
       description: '',
       link: '',
       image: ''
@@ -150,12 +150,12 @@ export const languageJsonStructure: LanguageStructure = {
       link: '',
       image: ''
     },
-    'Car Rental': {
+    'Dritec': {
       description: '',
       link: '',
       image: ''
     },
-    'Github Profile': {
+    'Uniso-Flow': {
       description: '',
       link: '',
       image: ''
