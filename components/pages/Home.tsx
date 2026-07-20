@@ -3,33 +3,50 @@ import { useLanguage } from '@/context/LanguageContext';
 import { languageJsonStructure } from '@/types/languageTypes';
 import Chat from '../Chat';
 import CvBtn from '../CvBtn';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+	const [isHovered, setIsHovered] = useState(false);
 	const { text, language } = useLanguage() || { text: languageJsonStructure };
 	const hour = new Date().getHours();
 	const dinamycText =
 		hour < 12 ? text?.home.welcome.morning : hour < 18 ? text?.home.welcome.afternoon : text?.home.welcome.evening;
-
+	const isTouchDevice = typeof window !== 'undefined' ? window.matchMedia('(pointer: coarse)').matches : false;
+	// No mobile a animação de rotação será ativada ao carregar a pagina, mudando o `isHovered` para `true` e após 1 segundo voltando para `false`
+	useEffect(() => {
+		if (isTouchDevice) {
+			const timer = setTimeout(() => {
+				setIsHovered(true);
+				setTimeout(() => {
+					setIsHovered(false);
+				}, 2000);
+			}, 1000);
+			return () => clearTimeout(timer);
+		}
+	}, [isTouchDevice]);
 	return (
 		<div className="home">
 			<div className="col1">
 				<h1>
-					{dinamycText?.split(',').map((part, index) => (
+					{dinamycText?.split(',').map((part, index) =>
 						index === 0 ? (
-							<span key={index} className="greeting">{part},</span>
+							<span key={index} className="greeting">
+								{part},
+							</span>
 						) : (
 							<span key={index}>{part}</span>
-						)
-					))}
-					<span className='hello'>👋</span>
+						),
+					)}
+					<span className="hello">👋</span>
 				</h1>
 				{text?.home.description.split('\n').map((line, index) => (
 					<p key={index}>{line}</p>
 				))}
-				<Chat text={text} language={language || ""} />
+				<Chat text={text} language={language || ''} />
 			</div>
 			<div className="col2">
-				<svg viewBox="20 20 142 160" xmlns="http://www.w3.org/2000/svg">
+				{/* SVG invisível só para registrar o clipPath compartilhado */}
+				<svg style={{ position: 'absolute', width: 0, height: 0 }}>
 					<defs>
 						<clipPath id="meuBlob">
 							<path
@@ -38,28 +55,61 @@ export default function Home() {
 							/>
 						</clipPath>
 					</defs>
-
-					<path
-						d="M46.7,-48.4C57.5,-35.8,61.2,-17.9,60.5,-0.7C59.8,16.6,54.8,33.1,43.9,45.4C33.1,57.7,16.6,65.7,4.7,61.1C-7.2,56.4,-14.5,39,-29.9,26.8C-45.3,14.5,-68.9,7.2,-75.9,-7C-82.8,-21.2,-73.2,-42.3,-57.7,-54.9C-42.3,-67.5,-21.2,-71.4,-1.6,-69.8C17.9,-68.2,35.8,-61,46.7,-48.4Z"
-						transform="translate(100 100)"
-						fill="none"
-						stroke="#8B3DEC"
-						strokeWidth="1"
-					/>
-
-					<image
-						href="/images/pfp.jpeg"
-						width='100%'
-						height='100%'
-						y='33'
-						x='23'
-						clipPath="url(#meuBlob)"
-						preserveAspectRatio="xMidYMid slice"
-
-					/>
 				</svg>
+
+				<div
+					className={`outline ${isHovered ? 'hover' : ''}`}
+					onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
+					onMouseLeave={() => !isTouchDevice && setIsHovered(false)}
+				>
+					{/* Anel Externo (Borda SVG) */}
+					<div className="ring">
+						<svg viewBox="20 20 142 160" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M46.7,-48.4C57.5,-35.8,61.2,-17.9,60.5,-0.7C59.8,16.6,54.8,33.1,43.9,45.4C33.1,57.7,16.6,65.7,4.7,61.1C-7.2,56.4,-14.5,39,-29.9,26.8C-45.3,14.5,-68.9,7.2,-75.9,-7C-82.8,-21.2,-73.2,-42.3,-57.7,-54.9C-42.3,-67.5,-21.2,-71.4,-1.6,-69.8C17.9,-68.2,35.8,-61,46.7,-48.4Z"
+								transform="translate(100 100)"
+								fill="none"
+								stroke="#8B3DEC"
+								strokeWidth="1"
+							/>
+						</svg>
+					</div>
+
+					{/* Fotos (Frente e Verso) */}
+					<div className="image">
+						{/* FRENTE */}
+						<div className="face front">
+							<svg viewBox="20 20 142 160" xmlns="http://www.w3.org/2000/svg">
+								<image
+									href="/images/pfp.jpeg"
+									width="100%"
+									height="100%"
+									x="23"
+									y="33"
+									clipPath="url(#meuBlob)"
+									preserveAspectRatio="xMidYMid slice"
+								/>
+							</svg>
+						</div>
+
+						{/* VERSO */}
+						<div className="face back">
+							<svg viewBox="20 20 142 160" xmlns="http://www.w3.org/2000/svg">
+								<image
+									href="/images/cartoon.png"
+									width="93%"
+									height="92%"
+									x="26"
+									y="30"
+									clipPath="url(#meuBlob)"
+									preserveAspectRatio="xMidYMid slice"
+								/>
+							</svg>
+						</div>
+					</div>
+				</div>
 			</div>
-			 <CvBtn />
+			<CvBtn />
 		</div>
 	);
 }
