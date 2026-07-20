@@ -995,11 +995,7 @@ a {
 
 	}
 }
-@media (max-width: 1300px) {
- .card-grid{
-	height: 1000px !important;
- }
-}
+
 @media (max-width: 1110px) {
 	.home {
 		flex-direction: column;
