@@ -108,6 +108,10 @@ nav {
 		width: fit-content;
 		padding: 30px;
 		padding-top: 40px;
+		@media (max-width: 1550px) {
+			padding: 15px;
+			padding-top: 20px;
+		}
 		background-color: var(--background-color);
 		box-shadow:
 			inset var(--shadow-color) 10px 10px 15px,
@@ -199,7 +203,7 @@ nav {
 	}
 }
 main {
-	margin-left: min(300px, 27%);
+	margin-left: min(230px, 20%);
 }
 .home {
 	flex: 1;
@@ -573,6 +577,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	width: 100%;
 	padding-top: 50px;
 	margin-left: min(50px, 10%);
 	h1 {
@@ -991,10 +996,9 @@ a {
 	}
 }
 @media (max-width: 1300px) {
-	.projects {
-		margin-left: min(80px, 8%);
-		transform: scale(0.95);
-	}
+ .card-grid{
+	height: 1000px !important;
+ }
 }
 @media (max-width: 1110px) {
 	.home {
