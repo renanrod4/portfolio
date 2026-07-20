@@ -34,7 +34,7 @@ export default async function RootLayout({
     const lang = (validLangs.includes(cookieLang as string) ? cookieLang : 'en-us') as Language;
 
     return (
-        <html lang={lang}>
+        <html lang={lang} suppressHydrationWarning>
             <body>
                 <LanguageProvider initialLanguage={lang}>
                     {children}

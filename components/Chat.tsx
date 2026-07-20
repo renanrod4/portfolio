@@ -1,16 +1,17 @@
-import { languageJsonStructure } from "@/types/languageTypes";
-import { ChatMessage } from "@/types/types";
-import React, { useState } from "react";
-import { FaPaperPlane } from "react-icons/fa6";
+import { languageJsonStructure } from '@/types/languageTypes';
+import { ChatMessage } from '@/types/types';
+import React, { useEffect, useState } from 'react';
+import { FaPaperPlane } from 'react-icons/fa6';
 
 export default function Chat({ text, language }: { text: typeof languageJsonStructure; language: string }) {
+	const [isMounted, setIsMounted] = useState(false);
 	const [inputChat, setInputChat] = useState('');
 	const [chatMessages, setChatMessages] = useState<Array<ChatMessage>>([]);
 	function handleSubmitChat(e: React.FormEvent) {
 		e.preventDefault();
 		if (!inputChat.trim()) return;
 		const newUserMessage: ChatMessage = { role: 'user', content: inputChat.trim() };
-		setChatMessages((prev) => [...prev, newUserMessage]);
+		setChatMessages(prev => [...prev, newUserMessage]);
 		setInputChat('');
 
 		async function fetchAIResponse() {
@@ -21,11 +22,14 @@ export default function Chat({ text, language }: { text: typeof languageJsonStru
 			});
 			const data = await response.json();
 			const newAIMessage: ChatMessage = { role: 'ai', content: data.response };
-			setChatMessages((prev) => [...prev, newAIMessage]);
+			setChatMessages(prev => [...prev, newAIMessage]);
 		}
 		fetchAIResponse();
-
 	}
+
+	useEffect(() => {
+		setIsMounted(true);
+	}, []);
 
 	return (
 		<div className="chat">
@@ -51,10 +55,23 @@ export default function Chat({ text, language }: { text: typeof languageJsonStru
 					</div>
 				))}
 			</div>
-			<div className="chatInputContainer">
-				<input type="text" name="chat" id="chat" autoComplete="off"	placeholder={text?.home.chatPlaceHolder} value={inputChat} onChange={(e) => setInputChat(e.target.value)} />
-				<button onClick={handleSubmitChat} className={language}><FaPaperPlane size={20} /></button>
-			</div>
+
+			{isMounted && (
+				<div className="chatInputContainer">
+					<input
+						type="text"
+						name="chat"
+						id="chat"
+						autoComplete="off"
+						placeholder={text?.home.chatPlaceHolder}
+						value={inputChat}
+						onChange={e => setInputChat(e.target.value)}
+					/>
+					<button onClick={handleSubmitChat} className={language}>
+						<FaPaperPlane size={20} />
+					</button>
+				</div>
+			)}
 		</div>
-	)
+	);
 }
