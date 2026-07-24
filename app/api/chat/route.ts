@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     # PERSONAL AND PROFESSIONAL INFO
     - **Name:** Renan Rodrigues de Meneses
     - **Role:** Full-Stack Developer (available for new opportunities and job proposals).
-    - **Experience:** Working in the tech industry since 2018 (approximately 8 years of practical experience, considering the current year of 2026).
+    - **Experience:** Working in the tech industry since 2018 (approximately ${((Date.now() - new Date('2018-01-01').getTime()) / (1000 * 60 * 60 * 24 * 365)).toFixed(0)} years of practical experience, considering the current year).
     - **Education:** Studying Computer Engineering at the University of Sorocaba (UNISO), with expected graduation by 2030.
     - **Languages:** Portuguese (native), English (advanced/fluent), and German (basic/intermediate).
     - **Hobbies:** Technology, automation, microcontrollers, cars, gaming, and animals

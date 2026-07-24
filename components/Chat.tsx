@@ -7,6 +7,7 @@ export default function Chat({ text, language }: { text: typeof languageJsonStru
 	const [isMounted, setIsMounted] = useState(false);
 	const [inputChat, setInputChat] = useState('');
 	const [chatMessages, setChatMessages] = useState<Array<ChatMessage>>([]);
+	const [githubRepos, setGithubRepos] = useState<any[]|null>(null);
 	function handleSubmitChat(e: React.FormEvent) {
 		e.preventDefault();
 		if (!inputChat.trim()) return;
@@ -30,6 +31,17 @@ export default function Chat({ text, language }: { text: typeof languageJsonStru
 	useEffect(() => {
 		setIsMounted(true);
 	}, []);
+	async function handleFocusInput() {
+		if (githubRepos) return; 
+		try {
+			const response = await fetch('/api/github');
+			const data = await response.json();
+			setGithubRepos(data);
+			console.log('Repositórios carregados:', data);
+		} catch (error) {
+			console.error('Erro ao chamar a API interna:', error);
+		}
+	}
 
 	return (
 		<div className="chat">
@@ -66,6 +78,7 @@ export default function Chat({ text, language }: { text: typeof languageJsonStru
 						placeholder={text?.home.chatPlaceHolder}
 						value={inputChat}
 						onChange={e => setInputChat(e.target.value)}
+						onFocus={handleFocusInput}
 					/>
 					<button onClick={handleSubmitChat} className={language}>
 						<FaPaperPlane size={20} />
