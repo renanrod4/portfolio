@@ -87,9 +87,8 @@ export async function GET() {
 			}
 			return {
 				name: repo.name,
-				description: repo.description || 'Sem descrição cadastrada.',
+				description: readmeExcerpt || repo.description || 'No description available.',
 				url: repo.html_url,
-				readmeExcerpt,
 				stack,
 			};
 		});

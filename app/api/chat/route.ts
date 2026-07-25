@@ -30,7 +30,7 @@ export async function POST(req: Request) {
 
     ${githubRepos && githubRepos.length > 0 ? `# GITHUB REPOSITORIES
     Here are some of my GitHub repositories that showcase my work and projects:
-    ${githubRepos}` : ''}
+    ${JSON.stringify(githubRepos, null, 2).replace(/[\[\]{}"]/g, '').replace(/,/g, '\n')}` : ''}
 
     # TECH STACK (SKILLS)
     - **Frontend:** React, Next.js, TypeScript, JavaScript, Tailwind CSS, Framer Motion, and Bootstrap. I highly value modern UI/UX design patterns, dynamic interfaces, bento grids, and responsive dark mode layouts.
@@ -46,6 +46,7 @@ export async function POST(req: Request) {
     - **GitHub:** https://github.com/renanrod4
     - **WhatsApp:** +55 11 93340-7053 (direct link: https://wa.me/5511933407053)
   `;
+  console.log('Role System:', roleSystem);
 
   const messages: Groq.Chat.ChatCompletionMessageParam[] = [
     {
