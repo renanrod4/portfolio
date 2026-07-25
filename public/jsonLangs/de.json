@@ -146,5 +146,17 @@
 		"Kompetenzen",
 		"Projekte",
 		"Kontakt"
-	]
+	],
+	"popups": {
+		"projects": {
+			"title": "Hat Ihnen meine Projekte gefallen?",
+			"message": "Sehen Sie sich mehr auf meinem GitHub an! Klicken Sie auf die Schaltfläche unten, um mein Profil zu besuchen",
+			"buttonAcceptText": "GitHub besuchen",
+			"buttonDenyText": "Nein, danke"
+		},
+		"contact": {
+			"title": "Nachricht gesendet!",
+			"message": "Vielen Dank, dass Sie mich kontaktiert haben! Ich werde so schnell wie möglich antworten!"
+		}
+	}
 }

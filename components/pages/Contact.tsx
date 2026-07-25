@@ -44,6 +44,7 @@ export default function Contact() {
 		}
 
 		setIsSending(false);
+		
 	}
 
 	const { text } = useLanguage() || { text: languageJsonStructure };
@@ -162,13 +163,11 @@ export default function Contact() {
 									onChange={e => setMessage(e.target.value)}
 								></textarea>
 							</div>
-							{/* Temporarily opening the popup on button click, since the email sending is mocked and doesn't return a success response */}
 							<button
 								type="submit"
 								className="send-button"
 								disabled={isSending}
-                                onClick={() => {setOpenPopup(true)}}
-							>
+								onSubmit={handleSubmit}>
 								{isSending ? text.contact.message.sending : text.contact.message.sendButton}
 							</button>
 						</form>
@@ -177,8 +176,8 @@ export default function Contact() {
 			</div>
 			{openPopup && (
                 <Popup
-                    title="Mensagem Enviada!"
-                    message="Obrigado por entrar em contato! Responderei o mais breve possível!"
+                    title={text.popups.contact.title}
+                    message={text.popups.contact.message}
                     show={!isAnimatingOut} 
                     onClose={handleClosePopup}
                 />

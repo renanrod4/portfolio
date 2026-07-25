@@ -513,6 +513,7 @@ main {
 			margin-bottom: 15px;
 			border-radius: 10px;
 			text-wrap: wrap;
+			white-space: pre-wrap;
 			width: fit-content;
 			box-shadow:
 				inset var(--shadow-color) 5px 5px 10px,
@@ -954,33 +955,6 @@ a {
 	textarea:focus {
 		border-color: var(--accent-color);
 	}
-
-	.send-button {
-		background: linear-gradient(
-			135deg,
-			color-mix(in srgb, var(--accent-color) 60%, var(--text-color)) 0%,
-			var(--accent-color) 30%,
-			color-mix(in srgb, var(--accent-color) 30%, transparent) 100%
-		);
-
-		color: var(--text-color);
-		border: none;
-		padding: 15px;
-		border-radius: 8px;
-		font-weight: bold;
-		cursor: pointer;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 10px;
-		margin-top: 30px;
-		transition: 0.3s;
-	}
-
-	.send-button:hover {
-		opacity: 0.9;
-		transform: scale(1.05);
-	}
 }
 @keyframes popupIn {
 	0% {
@@ -1039,6 +1013,19 @@ a {
 	}
 	&.close {
 		animation: popupOut 0.5s ease-out;
+	}
+	.buttons {
+		display: flex;
+		gap: 10px;
+		button{
+			flex:1;
+			&.deny{
+				filter: grayScale(1);
+			}
+		}
+	}
+	&.projects-popup{
+		max-width: min(500px, 90%);
 	}
 }
 @media (max-width: 1550px) {
@@ -1491,3 +1478,30 @@ a {
 		padding-bottom: 20px !important;
 	}
 }
+
+.send-button {
+		background: linear-gradient(
+			135deg,
+			color-mix(in srgb, var(--accent-color) 60%, var(--text-color)) 0%,
+			var(--accent-color) 30%,
+			color-mix(in srgb, var(--accent-color) 30%, transparent) 100%
+		);
+
+		color: var(--text-color);
+		border: none;
+		padding: 15px;
+		border-radius: 8px;
+		font-weight: bold;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		margin-top: 30px;
+		transition: 0.3s;
+	}
+
+	.send-button:hover {
+		opacity: 0.9;
+		transform: scale(1.05);
+	}

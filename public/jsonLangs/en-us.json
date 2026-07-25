@@ -146,5 +146,17 @@
 		"Skills",
 		"Projects",
 		"Contact"
-	]
+	],
+	"popups": {
+		"projects": {
+			"title": "Did you like my projects?",
+			"message": "Check out more on my GitHub! Click the button below to visit my profile",
+			"buttonAcceptText": "Visit GitHub",
+			"buttonDenyText": "No, thanks"
+		},
+		"contact": {
+			"title": "Message Sent!",
+			"message": "Thank you for reaching out! I will get back to you as soon as possible!"
+		}
+	}
 }

@@ -146,5 +146,17 @@
 		"Habilidades",
 		"Projetos",
 		"Contato"
-	]
+	],
+	"popups": {
+		"projects": {
+			"title": "Gostou dos meus projetos?",
+			"message": "Veja mais no meu GitHub! Clique no botão abaixo para visitar meu perfil",
+			"buttonAcceptText": "Visitar GitHub",
+			"buttonDenyText": "Não, obrigado"
+		},
+		"contact": {
+			"title": "Mensagem Enviada!",
+			"message": "Obrigado por entrar em contato! Responderei o mais breve possível!"
+		}
+	}
 }

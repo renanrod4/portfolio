@@ -2,40 +2,70 @@ import { languageJsonStructure } from '@/types/languageTypes';
 import { ChatMessage } from '@/types/types';
 import React, { useEffect, useState } from 'react';
 import { FaPaperPlane } from 'react-icons/fa6';
+import Linkify from 'linkify-react';
 
-export default function Chat({ text, language }: { text: typeof languageJsonStructure; language: string }) {
+export default function Chat({
+	text,
+	language,
+}: {
+	text: typeof languageJsonStructure;
+	language: string;
+}) {
 	const [isMounted, setIsMounted] = useState(false);
 	const [inputChat, setInputChat] = useState('');
 	const [chatMessages, setChatMessages] = useState<Array<ChatMessage>>([]);
-	const [githubRepos, setGithubRepos] = useState<any[]|null>(null);
+	const [githubRepos, setGithubRepos] = useState<any[] | null>(null);
+
 	function handleSubmitChat(e: React.FormEvent) {
 		e.preventDefault();
+
 		if (!inputChat.trim()) return;
-		const newUserMessage: ChatMessage = { role: 'user', content: inputChat.trim() };
+
+		const newUserMessage: ChatMessage = {
+			role: 'user',
+			content: inputChat.trim(),
+		};
+
 		setChatMessages(prev => [...prev, newUserMessage]);
 		setInputChat('');
 
 		async function fetchAIResponse() {
 			const response = await fetch('/api/chat', {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ message: newUserMessage.content, language, githubRepos }),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					message: newUserMessage.content,
+					language,
+					githubRepos,
+				}),
 			});
+
 			const data = await response.json();
-			const newAIMessage: ChatMessage = { role: 'ai', content: data.response };
+
+			const newAIMessage: ChatMessage = {
+				role: 'ai',
+				content: data.response,
+			};
+
 			setChatMessages(prev => [...prev, newAIMessage]);
 		}
+
 		fetchAIResponse();
 	}
 
 	useEffect(() => {
 		setIsMounted(true);
 	}, []);
+
 	async function handleFocusInput() {
-		if (githubRepos) return; 
+		if (githubRepos) return;
+
 		try {
 			const response = await fetch('/api/github');
 			const data = await response.json();
+
 			setGithubRepos(data);
 			console.log('Repositórios carregados:', data);
 		} catch (error) {
@@ -47,23 +77,20 @@ export default function Chat({ text, language }: { text: typeof languageJsonStru
 		<div className="chat">
 			<div className="chatMessageContainer">
 				{chatMessages.map((msg, index) => (
-					<div key={index} className={`message ${msg.role === 'user' ? 'userMessage' : 'aiMessage'}`}>
-						{msg.content.split('\n').map((line, lineIndex) => (
-							// using React.Fragment to avoid extra divs
-							<React.Fragment key={lineIndex}>
-								{line.split(/(https?:\/\/[^\s()]+)/g).map((part, partIndex) => {
-									if (/^https?:\/\/[^\s()]+$/.test(part)) {
-										return (
-											<a key={partIndex} href={part} target="_blank" rel="noopener noreferrer">
-												{part}
-											</a>
-										);
-									}
-									return part;
-								})}
-								<br />
-							</React.Fragment>
-						))}
+					<div
+						key={index}
+						className={`message ${
+							msg.role === 'user' ? 'userMessage' : 'aiMessage'
+						}`}
+					>
+						<Linkify
+							options={{
+								target: '_blank',
+								rel: 'noopener noreferrer',
+							}}
+						>
+							{msg.content}
+						</Linkify>
 					</div>
 				))}
 			</div>
@@ -80,6 +107,7 @@ export default function Chat({ text, language }: { text: typeof languageJsonStru
 						onChange={e => setInputChat(e.target.value)}
 						onFocus={handleFocusInput}
 					/>
+
 					<button onClick={handleSubmitChat} className={language}>
 						<FaPaperPlane size={20} />
 					</button>
