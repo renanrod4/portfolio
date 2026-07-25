@@ -5,20 +5,23 @@ const ACCEPTED_OWNERS = [MY_USER, '0cto-dev', 'HelioSync-Enterprise'];
 
 // Função para extrair o primeiro parágrafo válido do Markdown
 function extractFirstParagraph(markdown: string): string {
-	// Remove comentários HTML, imagens (![alt](url)), badges e títulos (# Heading)
 	const cleaned = markdown
 		.replace(/<!--[\s\S]*?-->/g, '') // Remove comentários HTML
 		.replace(/!\[.*?\]\(.*?\)/g, '') // Remove imagens/badges
 		.replace(/^#+.*$/gm, '') // Remove títulos (#, ##, ###)
-		.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'); // Transforma links [Texto](url) em apenas Texto
+		.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'); // Transforma links
 
-	// Divide por quebras de linha duplas/múltiplas para separar parágrafos
 	const paragraphs = cleaned
 		.split(/\n\s*\n/)
-		.map(p => p.replace(/\s+/g, ' ').trim()) // Normaliza espaços extras
-		.filter(p => p.length > 20); // Ignora linhas muito curtas ou vazias
+		// 👇 A MÁGICA AQUI: Tira as quebras primeiro, depois normaliza os espaços
+		.map(p =>
+			p
+				.replace(/\r?\n|\r/g, ' ')
+				.replace(/\s+/g, ' ')
+				.trim(),
+		)
+		.filter(p => p.length > 20);
 
-	// Retorna o primeiro parágrafo encontrado (ou vazio)
 	return paragraphs[0] || '';
 }
 
@@ -87,9 +90,13 @@ export async function GET() {
 			}
 			return {
 				name: repo.name,
-				description: readmeExcerpt || repo.description || 'No description available.',
+				// Limpa quebras de linha caso use o fallback do repo.description
+				description: (readmeExcerpt || repo.description || 'No description available.')
+					.replace(/\r?\n|\r/g, ' ')
+					.replace(/\s+/g, ' ')
+					.trim(),
 				url: repo.html_url,
-				stack,
+				stack: stack.join(', '),
 			};
 		});
 

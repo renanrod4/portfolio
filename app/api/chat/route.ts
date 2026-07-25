@@ -1,15 +1,36 @@
 import { NextResponse } from 'next/server';
 import Groq from 'groq-sdk';
 
+interface GitHubRepo {
+	name?: string;
+	description?: string;
+	url?: string;
+	stack?: string;
+}
+
+interface ChatRequestBody {
+	message: string;
+	language: 'en' | 'pt' | 'de' | string;
+	githubRepos: GitHubRepo[];
+}
+
 const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY,
+	apiKey: process.env.GROQ_API_KEY,
 });
 
 export async function POST(req: Request) {
-
-  const { message, language, githubRepos } = await req.json();
-  const fullLanguageName = language === 'en' ? 'English' : language === 'pt' ? 'Portuguese' : language === 'de' ? 'German' : 'Unknown';
-  const roleSystem = `
+	const { message, language, githubRepos } = (await req.json()) as ChatRequestBody;
+	const fullLanguageName =
+		language === 'en' ? 'English' : language === 'pt' ? 'Portuguese' : language === 'de' ? 'German' : 'Unknown';
+	const reposText: string = githubRepos
+		.map((repo: GitHubRepo) => {
+			if (!repo.name || !repo.description || !repo.url || !repo.stack) {
+				return '';
+			}
+			return `name: ${repo.name}\ndescription: ${repo.description}\nurl: ${repo.url}\nstack: ${repo.stack}`;
+		})
+		.join('\n\n');
+	const roleSystem = `
     # BEHAVIORAL INSTRUCTIONS
     - **Identity:** You are the personal intelligent assistant of Renan Rodrigues de Meneses's portfolio. You must answer IN THE FIRST PERSON ("I", "my", "me"), embodying Renan himself in a friendly, confident, direct, and professional manner.
     - **Language:** Use the language ${fullLanguageName} to communicate with the user. Unless the user sends a message in another language, in which case, reply in the user's language.
@@ -28,9 +49,13 @@ export async function POST(req: Request) {
     - **Languages:** Portuguese (native), English (advanced/fluent), and German (basic).
     - **Hobbies:** Technology, automation, microcontrollers, cars, gaming, and animals
 
-    ${githubRepos && githubRepos.length > 0 ? `# GITHUB REPOSITORIES
+    ${
+    reposText && reposText.trim() !== ''
+      ? `# GITHUB REPOSITORIES
     Here are some of my GitHub repositories that showcase my work and projects:
-    ${JSON.stringify(githubRepos, null, 2).replace(/[\[\]{}"]/g, '').replace(/,/g, '\n')}` : ''}
+    ${reposText}`
+      : ''
+	}
 
     # TECH STACK (SKILLS)
     - **Frontend:** React, Next.js, TypeScript, JavaScript, Tailwind CSS, Framer Motion, and Bootstrap. I highly value modern UI/UX design patterns, dynamic interfaces, bento grids, and responsive dark mode layouts.
@@ -46,56 +71,56 @@ export async function POST(req: Request) {
     - **GitHub:** https://github.com/renanrod4
     - **WhatsApp:** +55 11 93340-7053 (direct link: https://wa.me/5511933407053)
   `;
-  console.log('Role System:', roleSystem);
+	console.log('Role System:', roleSystem);
 
-  const messages: Groq.Chat.ChatCompletionMessageParam[] = [
-    {
-      role: 'system',
-      content: roleSystem,
-    },
-    {
-      role: 'user',
-      content: message,
-    },
-  ];
+	const messages: Groq.Chat.ChatCompletionMessageParam[] = [
+		{
+			role: 'system',
+			content: roleSystem,
+		},
+		{
+			role: 'user',
+			content: message,
+		},
+	];
 
-  try {
-    // 1. Tenta rodar o modelo principal (Llama 3.3 70B)
-    const completion = await groq.chat.completions.create({
-      model: 'llama-3.3-70b-versatile',
-      messages: messages,
-    });
+	try {
+		// 1. Tenta rodar o modelo principal (Llama 3.3 70B)
+		const completion = await groq.chat.completions.create({
+			model: 'llama-3.3-70b-versatile',
+			messages: messages,
+		});
 
-    return NextResponse.json({
-      response: completion.choices[0].message.content,
-      modelUsed: 'llama-3.3-70b-versatile',
-    });
-  } catch (error: any) {
-    // 2. Se falhar com erro 429 (Rate Limit), tenta o fallback com outra versão do modelo (Llama 3.1 8B)
-    if (error?.status === 429) {
-      console.warn('Limite do Llama 3.3 70B atingido. Iniciando fallback para o Llama 3.1 8B...');
+		return NextResponse.json({
+			response: completion.choices[0].message.content,
+			modelUsed: 'llama-3.3-70b-versatile',
+		});
+	} catch (error: any) {
+		// 2. Se falhar com erro 429 (Rate Limit), tenta o fallback com outra versão do modelo (Llama 3.1 8B)
+		if (error?.status === 429) {
+			console.warn('Limite do Llama 3.3 70B atingido. Iniciando fallback para o Llama 3.1 8B...');
 
-      try {
-        const fallbackCompletion = await groq.chat.completions.create({
-          model: 'llama-3.1-8b-instant',
-          messages: messages,
-        });
+			try {
+				const fallbackCompletion = await groq.chat.completions.create({
+					model: 'llama-3.1-8b-instant',
+					messages: messages,
+				});
 
-        return NextResponse.json({
-          response: fallbackCompletion.choices[0].message.content,
-          modelUsed: 'llama-3.1-8b-instant',
-        });
-      } catch (fallbackError: any) {
-        console.error('Erro no modelo de fallback (8B):', fallbackError);
-        return NextResponse.json(
-          { error: 'Ambos os modelos falharam ou atingiram o limite.' },
-          { status: 500 },
-        );
-      }
-    }
+				return NextResponse.json({
+					response: fallbackCompletion.choices[0].message.content,
+					modelUsed: 'llama-3.1-8b-instant',
+				});
+			} catch (fallbackError: any) {
+				console.error('Erro no modelo de fallback (8B):', fallbackError);
+				return NextResponse.json(
+					{ error: 'Ambos os modelos falharam ou atingiram o limite.' },
+					{ status: 500 },
+				);
+			}
+		}
 
-    // Caso seja um erro diferente de 429 (ex: chave de API inválida, erro de rede, etc)
-    console.error('Erro desconhecido na chamada da API:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
+		// Caso seja um erro diferente de 429 (ex: chave de API inválida, erro de rede, etc)
+		console.error('Erro desconhecido na chamada da API:', error);
+		return NextResponse.json({ error: error.message }, { status: 500 });
+	}
 }
