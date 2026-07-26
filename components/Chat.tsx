@@ -39,13 +39,14 @@ export default function Chat({
 					message: newUserMessage.content,
 					language,
 					githubRepos,
+					history: chatMessages,
 				}),
 			});
 
 			const data = await response.json();
 
 			const newAIMessage: ChatMessage = {
-				role: 'ai',
+				role: 'assistant',
 				content: data.response,
 			};
 

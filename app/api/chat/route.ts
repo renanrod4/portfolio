@@ -8,8 +8,14 @@ interface GitHubRepo {
 	stack?: string;
 }
 
+interface ChatMessage {
+	role: 'user' | 'assistant';
+	content: string;
+}
+
 interface ChatRequestBody {
 	message: string;
+	history?: ChatMessage[];
 	language: 'en' | 'pt' | 'de' | string;
 	githubRepos: GitHubRepo[];
 }
@@ -19,7 +25,7 @@ const groq = new Groq({
 });
 
 export async function POST(req: Request) {
-	const { message, language, githubRepos } = (await req.json()) as ChatRequestBody;
+	const { message, language, githubRepos, history = [] } = (await req.json()) as ChatRequestBody;
 	const fullLanguageName =
 		language === 'en' ? 'English' : language === 'pt' ? 'Portuguese' : language === 'de' ? 'German' : 'Unknown';
 	const reposText: string = githubRepos
@@ -57,11 +63,11 @@ export async function POST(req: Request) {
     - **Development Workflow:** I focus on clean architecture and modern deployment practices, constantly iterating on my projects, managing databases (like MongoDB and SQLite), and deploying web applications to production environments.
 
     ${
-    reposText && reposText.trim() !== ''
-      ? `# GITHUB REPOSITORIES
+		reposText && reposText.trim() !== ''
+			? `# GITHUB REPOSITORIES
     Here are some of my GitHub repositories that showcase my work and projects:
     ${reposText}`
-      : ''
+			: ''
 	}
 
     # TECH STACK (SKILLS)
@@ -80,11 +86,18 @@ export async function POST(req: Request) {
   `;
 	console.log('Role System:', roleSystem);
 
+	const previousMessages: Groq.Chat.ChatCompletionMessageParam[] = history.map(msg => ({
+		role: msg.role,
+		content: msg.content,
+	}));
+  console.log('Previous Messages:', previousMessages);
+
 	const messages: Groq.Chat.ChatCompletionMessageParam[] = [
 		{
 			role: 'system',
 			content: roleSystem,
 		},
+    ...previousMessages,
 		{
 			role: 'user',
 			content: message,
