@@ -4,21 +4,16 @@ import React, { useEffect, useState } from 'react';
 import { FaPaperPlane } from 'react-icons/fa6';
 import Linkify from 'linkify-react';
 
-export default function Chat({
-	text,
-	language,
-}: {
-	text: typeof languageJsonStructure;
-	language: string;
-}) {
+export default function Chat({ text, language }: { text: typeof languageJsonStructure; language: string }) {
 	const [isMounted, setIsMounted] = useState(false);
 	const [inputChat, setInputChat] = useState('');
 	const [chatMessages, setChatMessages] = useState<Array<ChatMessage>>([]);
 	const [githubRepos, setGithubRepos] = useState<any[] | null>(null);
 
-	function handleSubmitChat(e: React.FormEvent) {
+	function handleSubmitChat(e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>) {
 		e.preventDefault();
 
+		console.log('Submitting chat with input:', inputChat);
 		if (!inputChat.trim()) return;
 
 		const newUserMessage: ChatMessage = {
@@ -59,6 +54,24 @@ export default function Chat({
 	useEffect(() => {
 		setIsMounted(true);
 	}, []);
+	useEffect(() => {
+		function handleEnterKey(e: KeyboardEvent) {
+			if (e.key === 'Enter' && !e.shiftKey) {
+				e.preventDefault();
+				console.log('Enter key pressed, submitting chat...');
+				console.log('Current inputChat value:', inputChat);
+				handleSubmitChat(
+					e as unknown as React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>,
+				);
+			}
+		}
+
+		window.addEventListener('keydown', handleEnterKey);
+
+		return () => {
+			window.removeEventListener('keydown', handleEnterKey);
+		};
+	}, [inputChat, chatMessages, language, githubRepos]);
 
 	async function handleFocusInput() {
 		if (githubRepos) return;
@@ -78,12 +91,7 @@ export default function Chat({
 		<div className="chat">
 			<div className="chatMessageContainer">
 				{chatMessages.map((msg, index) => (
-					<div
-						key={index}
-						className={`message ${
-							msg.role === 'user' ? 'userMessage' : 'aiMessage'
-						}`}
-					>
+					<div key={index} className={`message ${msg.role === 'user' ? 'userMessage' : 'aiMessage'}`}>
 						<Linkify
 							options={{
 								target: '_blank',
