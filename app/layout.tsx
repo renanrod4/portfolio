@@ -9,6 +9,9 @@ import { Language } from '@/types/languageTypes';
 export const metadata: Metadata = {
 	title: "Renanrod's Portfolio",
 	description: 'Welcome to my personal portfolio website where I showcase my projects and skills.',
+    verification:{
+        google: 'aDOPi6ctOVGByWjhEwth9BDdeQOK3jO6KT2mGa09AQc'
+    }
 };
 
 export const viewport = {
