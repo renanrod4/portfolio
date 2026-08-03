@@ -69,47 +69,47 @@
 	"projects": {
 		"title": "Projetos",
 		"OctoDev": {
-			"description": "Plataforma de aprendizado gamificada para programação. Domine a codificação por meio de desafios interativos, árvores de habilidades e feedback em tempo real.",
+			"description": "Plataforma educacional de programação com IA, desafios práticos e trilhas gamificadas para transformar o aprendizado de código em uma experiência acessível.",
 			"link": "https://octodev.vercel.app/",
 			"image": "octodev.png"
 		},
 		"FlexyApi": {
-			"description": "API de gerenciamento de tarefas flexível e escalável, projetada para se adaptar a diversos casos de uso e fluxos de trabalho, oferecendo uma solução robusta para organização e produtividade.",
+			"description": "Gerador de dados mock com IA para criar JSONs personalizados a partir de prompts e esquemas, facilitando testes, protótipos e fluxos de desenvolvimento.",
 			"link": "https://flexy-api.vercel.app/",
 			"image": "flexyapi.png"
 		},
 		"Silhouettle": {
-			"description": "Jogo de geografia onde você adivinha o país com base em sua silhueta.",
+			"description": "Jogo de geografia onde você adivinha o país com base em sua silhueta, testando seu conhecimento de geografia mundial de forma divertida e interativa.",
 			"link": "https://silhouettle.vercel.app/",
 			"image": "silhouettle.png"
 		},
 		"RR's Dealership": {
-			"description": "Um site de concessionária de carros com design moderno e elegante, possuindo mais de 70 variantes de carros, cada um com uma página de detalhes individual.",
+			"description": "Catálogo automotivo digital com interface moderna, organização inteligente de veículos e uma experiência imersiva para explorar marcas, modelos e especificações.",
 			"link": "https://rr-dealership.vercel.app/",
 			"image": "rr-dealership.png"
 		},
 		"FrankAI": {
-			"description": "Assistente de voz inteligente executado localmente, projetado para distribuições Linux modernas",
+			"description": "Assistente de voz inteligente executado localmente, com transcrição, síntese de voz e IA offline para oferecer uma experiência rápida, privada e integrada ao Linux.",
 			"link": "https://github.com/renanrod4/frankai",
 			"image": "frankai.png"
 		},
 		"Gerenciador de despesas": {
-			"description": "Sistema completo para controle de despesas e receitas domésticas por pessoa.",
+			"description": "Gerencie finanças domésticas com controle de receitas, despesas e pessoas, visualizando saldos e movimentações em uma interface simples e organizada.",
 			"link": "https://github.com/renanrod4/gerenciador_de_despesas",
 			"image": "gerenciador-de-despesas.png"
 		},
 		"Dritec": {
-			"description": "Landing page institucional da Dritec para apresentação de serviços de caça vazamentos e contato comercial.",
+			"description": "Landing page profissional focada em conversão, SEO local e captação de clientes, com design responsivo e experiência otimizada para serviços de caça-vazamentos.",
 			"link": "https://dri.tec.br/",
 			"image": "dritec.png"
 		},
 		"Uniso-Flow": {
-			"description": "Gestão estratégica de fluxo acadêmico e equilíbrio de turmas para a Uniso.",
+			"description": "Sistema inteligente de gestão acadêmica que prevê demandas, equilibra turmas e transforma dados de alunos em decisões estratégicas a pedido da Universidade de Sorocaba.",
 			"link": "https://github.com/renanrod4/uniso-flow",
 			"image": "uniso-flow.png"
 		},
 		"Helio-sync": {
-			"description": "Aplicativo de sincronização de arquivos entre dispositivos, com foco em privacidade e segurança.",
+			"description": "Plataforma mecatrônica de energia solar com rastreamento em dois eixos, telemetria em tempo real e controle inteligente para maximizar o aproveitamento energético.",
 			"link": "https://helio-sync.vercel.app",
 			"image": "helio-sync.png"
 		}

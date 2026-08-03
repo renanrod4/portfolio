@@ -69,47 +69,47 @@
 	"projects": {
 		"title": "Projects",
 		"OctoDev": {
-			"description": "Gamified learning platform for programming. Master coding through interactive challenges, skill trees, and real-time feedback.",
+			"description": "AI-powered programming education platform with practical challenges and gamified learning paths, making coding education more accessible and engaging.",
 			"link": "https://octodev.vercel.app/",
 			"image": "octodev.png"
 		},
 		"FlexyApi": {
-			"description": "A AI-powered API that simulates any rest API based on a simple description. Perfect for testing and prototyping without backend setup.",
+			"description": "AI-powered mock data generator that creates custom JSON from prompts and schemas, streamlining testing, prototyping, and development workflows.",
 			"link": "https://flexy-api.vercel.app/",
 			"image": "flexyapi.png"
 		},
 		"Silhouettle": {
-			"description": "Geography game where you guess the country based on its silhouette.",
+			"description": "Geography game where players guess countries based on their silhouettes, testing world geography knowledge through a fun and interactive experience.",
 			"link": "https://silhouettle.vercel.app/",
 			"image": "silhouettle.png"
 		},
 		"RR's Dealership": {
-			"description": "A car dealership website with modern and elegant design, featuring over 70 car variants, each with an individual detail page.",
+			"description": "Digital automotive catalog with a modern interface, intelligent vehicle organization, and an immersive experience for exploring brands, models, and specifications.",
 			"link": "https://rr-dealership.vercel.app/",
 			"image": "rr-dealership.png"
 		},
 		"FrankAI": {
-			"description": "A AI-powered chatbot that can answer questions, provide information, and engage in conversation on a wide range of topics.",
+			"description": "Local AI voice assistant with speech recognition, voice synthesis, and offline processing, providing a fast, private, and integrated Linux experience.",
 			"link": "https://github.com/renanrod4/frankai",
 			"image": "frankai.png"
 		},
 		"Helio-sync": {
-			"description": "File synchronization application between devices, focusing on privacy and security.",
+			"description": "Mechatronic solar energy platform with dual-axis tracking, real-time telemetry, and intelligent control to maximize energy efficiency.",
 			"link": "https://helio-sync.vercel.app",
 			"image": "helio-sync.png"
 		},
 		"Uniso-Flow": {
-			"description": "Strategic management of academic flow and class balance for Uniso.",
+			"description": "Intelligent academic management system that predicts demand, balances classes, and transforms student data into strategic decisions for the University of Sorocaba.",
 			"link": "https://github.com/renanrod4/uniso-flow",
 			"image": "uniso-flow.png"
 		},
 		"Gerenciador de despesas": {
-			"description": "Complete system for managing household expenses and income per person.",
+			"description": "Household finance management system for tracking income, expenses, and users, with organized balance and transaction visualization.",
 			"link": "https://github.com/renanrod4/gerenciador_de_despesas",
 			"image": "gerenciador-de-despesas.png"
 		},
 		"Dritec": {
-			"description": "Dritec's institutional landing page for presenting leak detection services and commercial contact.",
+			"description": "Professional landing page focused on conversion, local SEO, and customer acquisition, with responsive design optimized for leak detection services.",
 			"link": "https://dri.tec.br/",
 			"image": "dritec.png"
 		}

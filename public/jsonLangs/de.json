@@ -69,47 +69,47 @@
 	"projects": {
 		"title": "Projekte",
 		"OctoDev": {
-			"description": "Gamifizierte Lernplattform für Programmierung. Beherrsche das Coden durch interaktive Herausforderungen, Fähigkeitsbäume und Echtzeit-Feedback.",
+			"description": "KI-gestützte Plattform zum Erlernen von Programmierung mit praktischen Herausforderungen und spielerischen Lernpfaden für einen zugänglichen Einstieg ins Programmieren.",
 			"link": "https://octodev.vercel.app/",
 			"image": "octodev.png"
 		},
 		"FlexyApi": {
-			"description": "FlexyAPI ist eine vielseitige RESTful API, die eine breite Palette von Funktionen bietet, darunter Benutzerverwaltung, Authentifizierung, Datenanalyse und mehr. Sie ist darauf ausgelegt, Entwicklern eine flexible und leistungsstarke Lösung für die Integration in ihre Anwendungen zu bieten.",
-			"link": "flexy-api.vercel.app",
+			"description": "KI-gestützter Mock-Daten-Generator zur Erstellung benutzerdefinierter JSON-Daten aus Prompts und Schemas, der Tests, Prototyping und Entwicklungsprozesse vereinfacht.",
+			"link": "https://flexy-api.vercel.app/",
 			"image": "flexyapi.png"
 		},
 		"Silhouettle": {
-			"description": "Ein Geografiespiel, bei dem Sie das Land anhand seiner Silhouette erraten.",
+			"description": "Geografie-Spiel, bei dem Länder anhand ihrer Silhouetten erraten werden und geografisches Wissen auf unterhaltsame und interaktive Weise getestet wird.",
 			"link": "https://silhouettle.vercel.app/",
 			"image": "silhouettle.png"
 		},
 		"RR's Dealership": {
-			"description": "Eine Autohaus-Website mit modernem und elegantem Design, die über 70 Autovarianten bietet, von denen jede eine individuelle Detailseite hat.",
+			"description": "Digitaler Automobilkatalog mit moderner Benutzeroberfläche, intelligenter Fahrzeugstruktur und einem immersiven Erlebnis zum Erkunden von Marken, Modellen und technischen Daten.",
 			"link": "https://rr-dealership.vercel.app/",
 			"image": "rr-dealership.png"
 		},
 		"FrankAI": {
-			"description": "FrankAI ist eine innovative Plattform, die künstliche Intelligenz nutzt, um Benutzern zu helfen, ihre Projekte effizienter zu verwalten und zu optimieren. Mit fortschrittlichen Algorithmen und benutzerfreundlichen Tools bietet FrankAI personalisierte Empfehlungen und Einblicke, die auf den spezifischen Bedürfnissen jedes Projekts basieren.",
+			"description": "Lokal ausgeführter intelligenter Sprachassistent mit Spracherkennung, Sprachsynthese und Offline-KI für eine schnelle, private und integrierte Linux-Erfahrung.",
 			"link": "https://github.com/renanrod4/frankai",
 			"image": "frankai.png"
 		},
 		"Helio-sync": {
-			"description": "Eine Anwendung zur Dateisynchronisation zwischen Geräten, mit Fokus auf Privatsphäre und Sicherheit.",
+			"description": "Mechatronische Solarenergieplattform mit zweiachsiger Nachführung, Echtzeit-Telemetrie und intelligenter Steuerung zur Maximierung der Energieeffizienz.",
 			"link": "https://helio-sync.vercel.app",
 			"image": "helio-sync.png"
 		},
 		"Gerenciador de despesas": {
-			"description": "Eine Anwendung zur Verwaltung persönlicher Finanzen, die es Benutzern ermöglicht, ihre Ausgaben zu verfolgen, Budgets zu erstellen und finanzielle Ziele zu setzen.",
-			"link": "https://gerenciador-de-despesas.vercel.app/",
+			"description": "System zur Verwaltung privater Finanzen mit Kontrolle über Einnahmen, Ausgaben und Personen sowie übersichtlicher Darstellung von Salden und Transaktionen.",
+			"link": "https://github.com/renanrod4/gerenciador_de_despesas",
 			"image": "gerenciador-de-despesas.png"
 		},
 		"Dritec": {
-			"description": "Dritec ist eine innovative Plattform, die darauf abzielt, die Effizienz und Produktivität von Unternehmen durch den Einsatz modernster Technologien und intelligenter Lösungen zu steigern. Mit einem Fokus auf Benutzerfreundlichkeit und Anpassungsfähigkeit bietet Dritec maßgeschneiderte Tools, die den spezifischen Anforderungen jedes Unternehmens gerecht werden.",
+			"description": "Professionelle Landingpage mit Fokus auf Conversion, lokaler SEO und Kundengewinnung, mit responsivem Design für Leckortungsdienste.",
 			"link": "https://dri.tec.br/",
 			"image": "dritec.png"
 		},
 		"Uniso-Flow": {
-			"description": "Uniso-Flow ist eine fortschrittliche Plattform, die entwickelt wurde, um den akademischen Fluss und die Klassenbalance an der Universidade de Sorocaba (UNISO) zu optimieren. Durch den Einsatz modernster Algorithmen und Datenanalyse-Tools ermöglicht Uniso-Flow eine effiziente Verwaltung von Kursen, Ressourcen und Zeitplänen, um ein ausgewogenes und effektives Lernumfeld für Studenten und Dozenten zu schaffen.",
+			"description": "Intelligentes akademisches Verwaltungssystem, das Nachfrage prognostiziert, Klassen ausgleicht und Studentendaten in strategische Entscheidungen für die Universität Sorocaba umwandelt.",
 			"link": "https://github.com/renanrod4/uniso-flow",
 			"image": "uniso-flow.png"
 		}
