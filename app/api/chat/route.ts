@@ -22,6 +22,8 @@ interface ChatRequestBody {
 
 const groq = new Groq({
 	apiKey: process.env.GROQ_API_KEY,
+  maxRetries: 0,
+  timeout: 15_000,
 });
 
 export async function POST(req: Request) {
@@ -43,7 +45,7 @@ export async function POST(req: Request) {
     - **Scope of Action:** Only answer questions regarding Renan's career, skills, projects, and professional background. If the user asks about completely unrelated topics outside of his professional scope, politely reply that this chat is dedicated to answering questions about Renan's professional journey.
     - **Crucial Formatting:** 
       * Do NOT use Markdown formatting (such as **bold**, # headings, or code blocks) under any circumstances.
-      * You must use '\\n' for line breaks and topic separation to keep the response clean and readable.
+      * You must use '\n' for line breaks and topic separation to keep the response clean and readable.
       * Use ' - ' to build lists and detail items.
     - **Limitation:** If you do not know the answer to something specific about Renan, say in a friendly way: "I haven't taught that to my assistant yet! But you can check more details on my portfolio or get in touch directly with me."
     - **Behavioral & Interview Questions (CRITICAL):** If the user asks highly subjective questions, behavioral interview questions, questions about past mistakes, or long-term future plans (e.g., "Where do you see yourself in 5 years?"), DO NOT invent or guess the answer. Instead, reply in the first person stating that you specifically configured this AI to focus on your code, architecture, and technical projects. Politely invite the user to schedule a live interview or chat using your contact information to discuss soft skills, culture, and career goals.
@@ -109,30 +111,30 @@ export async function POST(req: Request) {
 	];
 
 	try {
-		// 1. Tenta rodar o modelo principal (Llama 3.3 70B)
+		// 1. Tenta rodar o modelo principal (gpt-oss-120b)
 		const completion = await groq.chat.completions.create({
-			model: 'llama-3.3-70b-versatile',
+			model: 'openai/gpt-oss-120b',
 			messages: messages,
 		});
 
 		return NextResponse.json({
 			response: completion.choices[0].message.content,
-			modelUsed: 'llama-3.3-70b-versatile',
+			modelUsed: 'openai/gpt-oss-120b',
 		});
 	} catch (error: any) {
-		// 2. Se falhar com erro 429 (Rate Limit), tenta o fallback com outra versão do modelo (Llama 3.1 8B)
+		// 2. Se falhar com erro 429 (Rate Limit), tenta o fallback com outra versão do modelo (gpt-oss-20b)
 		if (error?.status === 429) {
-			console.warn('Limite do Llama 3.3 70B atingido. Iniciando fallback para o Llama 3.1 8B...');
+			console.warn('Limite do gpt-oss-120b atingido, tentando fallback com gpt-oss-20b...');
 
 			try {
 				const fallbackCompletion = await groq.chat.completions.create({
-					model: 'llama-3.1-8b-instant',
+					model: 'openai/gpt-oss-20b',
 					messages: messages,
 				});
 
 				return NextResponse.json({
 					response: fallbackCompletion.choices[0].message.content,
-					modelUsed: 'llama-3.1-8b-instant',
+					modelUsed: 'openai/gpt-oss-20b',
 				});
 			} catch (fallbackError: any) {
 				console.error('Erro no modelo de fallback (8B):', fallbackError);
@@ -148,3 +150,66 @@ export async function POST(req: Request) {
 		return NextResponse.json({ error: error.message }, { status: 500 });
 	}
 }
+
+[
+  {
+    "name": "frankAI",
+    "description": "Assistente de voz inteligente executado localmente em Python, projetado para distribuições Linux modernas (como Linux Mint, Ubuntu e Debian). O projeto combina `evdev`, `sounddevice`, `asyncio`, `Whisper` e `Piper` para oferecer uma experiência de Push-to-Talk estável e de baixa latência, com transcrição local em português, processamento de intenção via Ollama e síntese de fala em voz natural, tudo de forma independente do ambiente de desktop utilizado.",
+    "url": "https://github.com/renanrod4/frankAI",
+    "stack": "Python, Shell"
+  },
+  {
+    "name": "blame-cli",
+    "description": "A local-first Rust CLI that uses LLMs and repository history to generate commit messages that fit your workflow. **It doesn't just write commits; it learns how you write.** By analyzing commit history, filtering noisy diffs, and supporting any OpenAI-compatible provider, Blame creates commit suggestions that feel native to your project while keeping the developer in control.",
+    "url": "https://github.com/renanrod4/blame-cli",
+    "stack": ""
+  },
+  {
+    "name": "portfolio",
+    "description": "Portfólio interativo e trilíngue desenvolvido para demonstrar arquitetura moderna e padrões avançados de UI/UX. Construído com Next.js 16, React 19 e TypeScript, o projeto combina animações fluidas utilizando Framer Motion e GSAP, além de contar com um assistente virtual nativo alimentado por inteligência artificial para interação direta com os visitantes.",
+    "url": "https://github.com/renanrod4/portfolio",
+    "stack": "TypeScript, CSS, JavaScript"
+  },
+  {
+    "name": "helio-sync",
+    "description": "Helio Sync é uma plataforma mecatrônica inteligente projetada para maximizar a eficiência da captação de energia solar através de um sistema de rastreamento (tracker) em tempo real. O projeto integra um dispositivo embarcado de alta precisão, que utiliza algoritmos matemáticos para acompanhar a trajetória do sol em dois eixos, a uma interface digital completa (Dashboard) para monitoramento de telemetria, análise de eficiência energética e controle remoto do hardware.",
+    "url": "https://github.com/HelioSync-Enterprise/helio-sync",
+    "stack": "TypeScript, Python, CSS, JavaScript"
+  },
+  {
+    "name": "dritec",
+    "description": "Dritec é uma landing page institucional e de alta conversão desenvolvida com Next.js 16, React 19 e Tailwind CSS 4 para uma empresa especializada em caça-vazamentos. Focada na captação rápida de leads via WhatsApp e otimização avançada para motores de busca (SEO Local e Schema.org), a aplicação apresenta uma arquitetura front-end componentizada com App Router, garantindo navegação fluida, performance excepcional em dispositivos móveis e uma infraestrutura pronta para testes A/B em campanhas regionais.",
+    "url": "https://github.com/renanrod4/dritec",
+    "stack": "TypeScript, CSS, JavaScript"
+  },
+  {
+    "name": "flexyApi",
+    "description": "Flexy API is a modern, AI-powered mock data generator built with Next.js 15, React 19, and TypeScript, designed to turn simple prompts and schema ideas into realistic, production-ready JSON in seconds. Integrating language models via the OpenAI SDK and Hugging Face, it goes beyond static generators by allowing developers to describe a context and define a structure, receiving meaningful, context-aware mock data through a simple API-first workflow. Whether you need user profiles, product catalogs, or custom datasets for prototypes and tests, Flexy API accelerates development cycles with high flexibility and control.",
+    "url": "https://github.com/renanrod4/flexyApi",
+    "stack": "TypeScript, CSS, JavaScript"
+  },
+  {
+    "name": "rr-dealership",
+    "description": "RR's Dealership is a modern automotive digital showroom built with Next.js 16, React 19, TypeScript, and Tailwind CSS. Leveraging the Next.js App Router and a deeply nested, structured local JSON catalog, the application delivers a highly responsive, hierarchical browsing experience (Brands -> Models -> Generations -> Trims) with complete spec sheets. Designed as a superior alternative to traditional flat-list automotive catalogs, the project combines advanced dynamic routing, strong UI/UX design patterns, and scalable data presentation.",
+    "url": "https://github.com/renanrod4/rr-dealership",
+    "stack": "TypeScript, CSS, JavaScript"
+  },
+  {
+    "name": "octodev",
+    "description": "**OctoDev** é uma plataforma educacional Full Stack desenvolvida com Next.js e React, focada no ensino de programação através de uma abordagem gamificada e acessível. O sistema utiliza MongoDB para gestão de progresso e um motor dinâmico de lições, integrando Inteligência Artificial (Hugging Face/OpenRouter) para suporte e correção automatizada de código em tempo real. A plataforma transforma o aprendizado em uma experiência interativa, com suporte a múltiplas linguagens e destaque para a inclusão da linguagem brasileira Tenda.",
+    "url": "https://github.com/0cto-dev/octodev",
+    "stack": "TypeScript, CSS, JavaScript, Rust"
+  },
+  {
+    "name": "uniso-flow",
+    "description": "O Uniso Flow é uma ferramenta desenvolvida para transformar o gerenciamento manual de turmas em um painel inteligente de controle. O sistema automatiza a previsão de demanda de alunos por disciplina, auxiliando a coordenação a equilibrar a ocupação das salas e evitar gargalos de matrícula.",
+    "url": "https://github.com/renanrod4/uniso-flow",
+    "stack": "TypeScript, CSS, JavaScript"
+  },
+  {
+    "name": "gerenciador_de_despesas",
+    "description": "Sistema completo para controle de despesas e receitas domésticas por pessoa. A aplicação conta com um ecossistema completo composto por uma API RESTful e uma interface interativa.",
+    "url": "https://github.com/renanrod4/gerenciador_de_despesas",
+    "stack": "TypeScript, CSS, C#, Python, JavaScript, HTML"
+  }
+]
